@@ -1,6 +1,10 @@
 package model;
 
+import java.util.ArrayList;
+
 public class World {
+	
+	private ArrayList<Element> elementList;
 
 	public World(){
 		
