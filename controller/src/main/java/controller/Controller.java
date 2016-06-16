@@ -66,8 +66,8 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
-		private int posHeroX;
-		private int posHeroY;
+		int posHeroX;
+		int posHeroY;
 		
 		posHeroX = model.positionHeroX();
 		posHeroY = model.positionHeroY();
@@ -76,15 +76,16 @@ public class Controller implements IController {
 			case UP:
 				posHeroX ++;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(UP);
-					else
+						model.move_global(UP);
+					}
+					else {
 					}
 				break;
 			case DOWN:
 				posHeroY ++;
 					if (model.isPenetrable(posHeroX, posHeroY) = true) {
-						model.move_gobal(DOWN);
-					else
+						model.move_gobal(DOWN);}
+					else{
 					}
 				break;
 			case Level3:
