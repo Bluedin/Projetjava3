@@ -14,15 +14,15 @@ public interface IModel {
 	 *
 	 * @return the message
 	 */
-	String getMessage();
+	Object getWorld();
 
 	/**
 	 * Load the message.
 	 *
 	 * @param key
-	 *          the key
+	 *            the key
 	 */
-	void loadMessage(String key);
+	void loadWorld(int key);
 
 	/**
 	 * Gets the observable.
@@ -30,4 +30,16 @@ public interface IModel {
 	 * @return the observable
 	 */
 	Observable getObservable();
+
+	int positionHeroX();
+
+	int positionHeroY();
+
+	boolean isPenetrable(int X, int Y);
+
+	boolean spellOrNot();
+
+	int positionSpellX();
+
+	int positionSpellY();
 }
