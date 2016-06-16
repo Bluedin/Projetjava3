@@ -12,7 +12,6 @@ import contract.IView;
 /**
  * The Class View.
  *
- * @author Jean-Aymeric Diet
  */
 public class View implements IView, Runnable {
 
@@ -57,7 +56,7 @@ public class View implements IView, Runnable {
 	 *
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
-	public void printMessage(final String message) {
+	public void printWorld(IModel model) {
 		this.viewFrame.printMessage(message);
 	}
 
