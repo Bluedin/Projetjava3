@@ -39,6 +39,7 @@ public class Controller implements IController {
 		
 	}
 
+	public void move_possible ()
 	/**
 	 * Sets the view.
 	 *
@@ -65,12 +66,26 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		private int posHeroX;
+		private int posHeroY;
+		
+		posHeroX = model.positionHeroX();
+		posHeroY = model.positionHeroY();
+		
 		switch (controllerOrder) {
-			case Level1:
-				this.model.loadWorld("1");
+			case UP:
+				posHeroX ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(UP);
+					else
+					}
 				break;
-			case Level2:
-				this.model.loadWorld("2");
+			case DOWN:
+				posHeroY ++;
+					if (model.isPenetrable(posHeroX, posHeroY) = true) {
+						model.move_gobal(DOWN);
+					else
+					}
 				break;
 			case Level3:
 				this.model.loadWorld("3");
