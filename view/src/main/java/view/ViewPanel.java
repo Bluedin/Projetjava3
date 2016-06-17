@@ -89,7 +89,7 @@ class ViewPanel extends JPanel implements Observer {
 		image = getToolkit().getImage("/sprite/monster_4.png");
 		image = getToolkit().getImage("/sprite/purse.png");
 		image = getToolkit().getImage("/sprite/vertical_bone.png");
-		graphics.drawImage(image, 32, 32, this);
+	    graphics.drawImage(image, 32, 32, this);
 	//	graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
 	}
 }
