@@ -36,7 +36,8 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		
+		orderPerform(controllerOrder);
+		spellTest();
 	}
 	/**
 	 * Sets the view.
@@ -62,9 +63,7 @@ public class Controller implements IController {
 		if (model.spellOrNot()) {
 			model.shoot();
 		}
-			else {
-				
-			}
+		
 		}
 	
 
@@ -155,6 +154,9 @@ public class Controller implements IController {
 					else {
 						
 					}
+				break;
+			case SHOOT:
+				spellTest();
 				break;
 				
 				default:
