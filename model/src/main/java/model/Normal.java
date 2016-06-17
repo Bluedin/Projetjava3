@@ -1,11 +1,37 @@
 package model;
 
-public class Normal implements IBehaviour{
+public class Normal implements IBehaviour, IMobile{
 
 
-	public void move(int X, int Y, Hero hero) {
-		// TODO Auto-generated method stub
+	public Ennemy move(Ennemy ennemy, Hero hero) {
+		return ennemy;
 		
 	}
+
+	public Ennemy moveDown(Ennemy ennemy) {
+		ennemy.Y ++;
+		return ennemy;
+	}
+
+	public Ennemy moveLeft(Ennemy ennemy) {
+		ennemy.X --;
+		return ennemy;
+	}
+
+	public Ennemy moveUp(Ennemy ennemy) {
+		ennemy.Y --;
+		return ennemy;
+	}
+
+	public Ennemy moveRight(Ennemy ennemy) {
+		ennemy.X ++;
+		return ennemy;
+	}
+
+	public Ennemy moveGlobal(Ennemy ennemy) {
+		return ennemy;
+	}
+
+
 	
 }

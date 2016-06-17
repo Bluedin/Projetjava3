@@ -43,7 +43,7 @@ public class Ennemy extends Element implements IDisappear{
 	
 	public void move(Hero hero){
 		if(life){
-			behaviour.move(X, Y, hero);
+			behaviour.move(this , hero);
 		}
 	}
 	
