@@ -2,6 +2,6 @@ package model;
 
 public interface IBehaviour {
 
-	void move();
+	void move(int X, int Y, Hero hero);
 	
 }
