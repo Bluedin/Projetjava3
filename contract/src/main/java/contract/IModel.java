@@ -46,5 +46,8 @@ public interface IModel {
 	void shoot();
 	
 	void move_global(ControllerOrder direction);
+
+
+
 	
 }
