@@ -42,4 +42,9 @@ public interface IModel {
 	int positionSpellX();
 
 	int positionSpellY();
+	
+	void shoot();
+	
+	void move_global(ControllerOrder direction);
+	
 }
