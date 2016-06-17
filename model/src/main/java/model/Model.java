@@ -107,4 +107,9 @@ public class Model extends Observable implements IModel {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void animate() {
+		// TODO Auto-generated method stub
+		
+	}
 }

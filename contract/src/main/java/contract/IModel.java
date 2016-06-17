@@ -10,14 +10,14 @@ import java.util.Observable;
 public interface IModel {
 
 	/**
-	 * Gets the message.
+	 * Gets the world.
 	 *
-	 * @return the message
+	 * @return the world sous forme de tableau de strng
 	 */
-	Object getWorld();
+	String[][] getWorld();
 
 	/**
-	 * Load the message.
+	 * Load the world
 	 *
 	 * @param key
 	 *            the key
@@ -43,7 +43,7 @@ public interface IModel {
 	
 	void move_global(ControllerOrder direction);
 
-
+	void animate();
 
 	
 }
