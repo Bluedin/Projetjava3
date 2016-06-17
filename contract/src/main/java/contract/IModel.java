@@ -38,10 +38,6 @@ public interface IModel {
 	boolean isPenetrable(int X, int Y);
 
 	boolean spellOrNot();
-
-	int positionSpellX();
-
-	int positionSpellY();
 	
 	void shoot();
 	

@@ -4,8 +4,8 @@ public class Wall extends Element {
 
 	private Permeability permeability = Permeability.BLOCKING;
 	
-	public Wall(int X, int Y){
-		super(X, Y, "X");
+	public Wall(int X, int Y, String sprite){
+		super(X, Y, sprite);
 	}
 	
 	public Permeability getPermeability(){
