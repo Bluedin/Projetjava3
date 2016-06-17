@@ -57,6 +57,16 @@ public class Controller implements IController {
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
+	
+	private void spellTest() {
+		if (model.spellOrNot()) {
+			model.shoot();
+		}
+			else {
+				
+			}
+		}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -146,8 +156,11 @@ public class Controller implements IController {
 						
 					}
 				break;
+				
 				default:
+					
 				break;
+				
 		}
 	}
 
