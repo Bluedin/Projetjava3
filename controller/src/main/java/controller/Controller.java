@@ -36,11 +36,11 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
+		while (true) {
 		model.animate();
 		view.printWorld(model);
-		orderPerform(controllerOrder);
-		spellTest();
 	}
+		}
 	/**
 	 * Sets the view.
 	 *
