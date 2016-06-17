@@ -38,8 +38,6 @@ public class Controller implements IController {
 	public void control() {
 		
 	}
-
-	public void move_possible ()
 	/**
 	 * Sets the view.
 	 *
@@ -59,6 +57,16 @@ public class Controller implements IController {
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
+	
+	private void spellTest() {
+		if (model.spellOrNot()) {
+			model.shoot();
+		}
+			else {
+				
+			}
+		}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -76,7 +84,7 @@ public class Controller implements IController {
 			case UP:
 				posHeroY --;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_global(UP);
+						model.move_global(controllerOrder.UP);
 					}
 					else {
 					}
@@ -84,7 +92,7 @@ public class Controller implements IController {
 			case DOWN:
 				posHeroY ++;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(DOWN);
+						model.move_global(controllerOrder.DOWN);
 						}
 					else {
 						
@@ -93,7 +101,7 @@ public class Controller implements IController {
 			case LEFT:
 				posHeroX --;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(LEFT);
+						model.move_global(controllerOrder.LEFT);
 						}
 					else {
 						
@@ -102,7 +110,7 @@ public class Controller implements IController {
 			case RIGHT:
 				posHeroX ++;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(RIGHT);
+						model.move_global(controllerOrder.RIGHT);
 						}
 					else {
 						
@@ -112,7 +120,7 @@ public class Controller implements IController {
 				posHeroX --;
 				posHeroY --;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(UPLEFT);
+						model.move_global(controllerOrder.UPLEFT);
 						}
 					else {
 						
@@ -122,7 +130,7 @@ public class Controller implements IController {
 				posHeroX ++;
 				posHeroY --;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(UPRIGHT);
+						model.move_global(controllerOrder.UPRIGHT);
 						}
 					else {
 						
@@ -132,7 +140,7 @@ public class Controller implements IController {
 				posHeroX --;
 				posHeroY ++;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(DOWNLEFT);
+						model.move_global(controllerOrder.DOWNLEFT);
 						}
 					else {
 						
@@ -142,14 +150,17 @@ public class Controller implements IController {
 				posHeroX ++;
 				posHeroY ++;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
-						model.move_gobal(DOWNRIGHT);
+						model.move_global(controllerOrder.DOWNRIGHT);
 						}
 					else {
 						
 					}
 				break;
+				
 				default:
+					
 				break;
+				
 		}
 	}
 

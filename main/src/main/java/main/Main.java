@@ -1,5 +1,5 @@
 package main;
-
+import javax.swing.JFrame;
 import controller.Controller;
 import model.Model;
 import view.View;
@@ -12,7 +12,7 @@ import view.View;
 public abstract class Main {
 
 	/**
-	 * The main method.
+	 * The main method.   
 	 *
 	 * @param args
 	 *          the arguments

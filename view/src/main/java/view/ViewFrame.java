@@ -1,15 +1,16 @@
 package view;
-
+import javax.swing.JFrame;
 import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JFrame;
+
 import javax.swing.JOptionPane;
 
 import contract.IController;
 import contract.IModel;
+
 
 /**
  * The Class ViewFrame.
@@ -18,6 +19,7 @@ import contract.IModel;
  */
 class ViewFrame extends JFrame implements KeyListener {
 
+	
 	/** The model. */
 	private IModel						model;
 
@@ -142,6 +144,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *          the message
 	 */
 	public void printWorld(IModel model) {
+
 		
 	}
 
@@ -171,4 +174,5 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyReleased(final KeyEvent e) {
 
 	}
+	
 }
