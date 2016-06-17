@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
  */
 class ViewPanel extends JPanel implements Observer {
 
+	private Image image;
 	/** The view frame. */
 	private ViewFrame					viewFrame;
 	/** The Constant serialVersionUID. */
@@ -46,7 +48,7 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	private void setViewFrame(final ViewFrame viewFrame) {
 		this.viewFrame = viewFrame;
-	}
+	} 
 
 	/*
 	 * (non-Javadoc)
@@ -64,6 +66,8 @@ class ViewPanel extends JPanel implements Observer {
 	@Override
 	protected void paintComponent(final Graphics graphics) {
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		"/sprite/lorann_b.png";
+		graphics.drawImage(image, 32, 32, this);
 	//	graphics.drawString(this.getViewFrame().getModel().getMessage(), 10, 20);
 	}
 }
