@@ -8,9 +8,12 @@ package contract;
 public enum ControllerOrder {
 
 	
-	Level1, /* First Level */
-	Level2, /* Second Level */
-	Level3, /* Third Level */
-	Level4, /* Fourth Level */
-	Level5  /* Fifth Level */
+	UP, /* First Level */
+	DOWN, /* Second Level */
+	LEFT, /* Third Level */
+	RIGHT, /* Fourth Level */
+	UPLEFT,
+	UPRIGHT,
+	DOWNLEFT,
+	DOWNRIGHT
 }

@@ -39,6 +39,7 @@ public class Controller implements IController {
 		
 	}
 
+	public void move_possible ()
 	/**
 	 * Sets the view.
 	 *
@@ -65,24 +66,89 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		int posHeroX;
+		int posHeroY;
+		
+		posHeroX = model.positionHeroX();
+		posHeroY = model.positionHeroY();
+		
 		switch (controllerOrder) {
-			case Level1:
-				this.model.loadWorld("1");
+			case UP:
+				posHeroY --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_global(UP);
+					}
+					else {
+					}
 				break;
-			case Level2:
-				this.model.loadWorld("2");
+			case DOWN:
+				posHeroY ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(DOWN);
+						}
+					else {
+						
+					}
 				break;
-			case Level3:
-				this.model.loadWorld("3");
+			case LEFT:
+				posHeroX --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(LEFT);
+						}
+					else {
+						
+					}
 				break;
-			case Level4:
-				this.model.loadWorld("4");
+			case RIGHT:
+				posHeroX ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(RIGHT);
+						}
+					else {
+						
+					}
 				break;
-			case Level5:
-				this.model.loadWorld("5");
-
-
-			default:
+			case UPLEFT:
+				posHeroX --;
+				posHeroY --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(UPLEFT);
+						}
+					else {
+						
+					}
+				break;
+			case UPRIGHT:
+				posHeroX ++;
+				posHeroY --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(UPRIGHT);
+						}
+					else {
+						
+					}
+				break;
+			case DOWNLEFT:
+				posHeroX --;
+				posHeroY ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(DOWNLEFT);
+						}
+					else {
+						
+					}
+				break;
+			case DOWNRIGHT:
+				posHeroX ++;
+				posHeroY ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(DOWNRIGHT);
+						}
+					else {
+						
+					}
+				break;
+				default:
 				break;
 		}
 	}

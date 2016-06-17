@@ -6,7 +6,7 @@ public abstract class Element {
 	protected int Y;
 	protected String sprite;
 	
-	public void Element(int X, int Y, String sprite){
+	public Element(int X, int Y, String sprite){
 		
 	}
 
