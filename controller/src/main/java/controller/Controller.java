@@ -74,7 +74,7 @@ public class Controller implements IController {
 		
 		switch (controllerOrder) {
 			case UP:
-				posHeroX ++;
+				posHeroY --;
 					if (model.isPenetrable(posHeroX, posHeroY)) {
 						model.move_global(UP);
 					}
@@ -83,22 +83,72 @@ public class Controller implements IController {
 				break;
 			case DOWN:
 				posHeroY ++;
-					if (model.isPenetrable(posHeroX, posHeroY) = true) {
-						model.move_gobal(DOWN);}
-					else{
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(DOWN);
+						}
+					else {
+						
 					}
 				break;
-			case Level3:
-				this.model.loadWorld("3");
+			case LEFT:
+				posHeroX --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(LEFT);
+						}
+					else {
+						
+					}
 				break;
-			case Level4:
-				this.model.loadWorld("4");
+			case RIGHT:
+				posHeroX ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(RIGHT);
+						}
+					else {
+						
+					}
 				break;
-			case Level5:
-				this.model.loadWorld("5");
-
-
-			default:
+			case UPLEFT:
+				posHeroX --;
+				posHeroY --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(UPLEFT);
+						}
+					else {
+						
+					}
+				break;
+			case UPRIGHT:
+				posHeroX ++;
+				posHeroY --;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(UPRIGHT);
+						}
+					else {
+						
+					}
+				break;
+			case DOWNLEFT:
+				posHeroX --;
+				posHeroY ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(DOWNLEFT);
+						}
+					else {
+						
+					}
+				break;
+			case DOWNRIGHT:
+				posHeroX ++;
+				posHeroY ++;
+					if (model.isPenetrable(posHeroX, posHeroY)) {
+						model.move_gobal(DOWNRIGHT);
+						}
+					else {
+						
+					}
+				break;
+				default:
 				break;
 		}
 	}
