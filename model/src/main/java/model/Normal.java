@@ -8,28 +8,23 @@ public class Normal implements IBehaviour, IMobile{
 		
 	}
 
-	public Ennemy moveDown(Ennemy ennemy) {
-		ennemy.Y ++;
-		return ennemy;
+	public void moveDown(Element element) {
+		element.Y ++;
 	}
 
-	public Ennemy moveLeft(Ennemy ennemy) {
-		ennemy.X --;
-		return ennemy;
+	public void moveLeft(Element element) {
+		element.X --;
 	}
 
-	public Ennemy moveUp(Ennemy ennemy) {
-		ennemy.Y --;
-		return ennemy;
+	public void moveUp(Element element) {
+		element.Y --;
 	}
 
-	public Ennemy moveRight(Ennemy ennemy) {
-		ennemy.X ++;
-		return ennemy;
+	public void moveRight(Element element) {
+		element.X ++;
 	}
 
-	public Ennemy moveGlobal(Ennemy ennemy) {
-		return ennemy;
+	public void moveGlobal(Element element) {
 	}
 
 

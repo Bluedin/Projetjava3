@@ -2,10 +2,10 @@ package model;
 
 public interface IMobile {
 
-	Ennemy moveDown(Ennemy ennemy);
-	Ennemy moveLeft(Ennemy ennemy);
-	Ennemy moveUp(Ennemy ennemy);
-	Ennemy moveRight(Ennemy ennemy);
-	Ennemy moveGlobal(Ennemy ennemy);
+	void moveDown(Element element);
+	void moveLeft(Element element);
+	void moveUp(Element element);
+	void moveRight(Element element);
+	void moveGlobal(Element element);
 	
 }
