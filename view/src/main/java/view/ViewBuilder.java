@@ -1,5 +1,13 @@
 package view;
+// this class is for put the picture on the screen
 
-public class ViewBuilder {
+import javax.swing.JFrame;
+
+public class ViewBuilder  {
+
+	/**
+	 * 
+	 */
+
 
 }

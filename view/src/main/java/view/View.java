@@ -1,9 +1,7 @@
 package view;
 
 import java.awt.event.KeyEvent;
-
 import javax.swing.SwingUtilities;
-
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
@@ -40,30 +38,22 @@ public class View implements IView, Runnable {
 		switch (keyCode) {
 			case KeyEvent.VK_8:
 				return ControllerOrder.UP;
-				break;
 			case KeyEvent.VK_2:
 				return ControllerOrder.DOWN;
-				break;
 			case KeyEvent.VK_4:
 				return ControllerOrder.LEFT;
-				break;
 			case KeyEvent.VK_6:
 				return ControllerOrder.RIGHT;
-				break;
 			case KeyEvent.VK_7:
 				return ControllerOrder.UPLEFT;
-				break;
 			case KeyEvent.VK_9:
 				return ControllerOrder.UPRIGHT;
-				break;
 			case KeyEvent.VK_1:
 				return ControllerOrder.DOWNLEFT;
-				break;
 			case KeyEvent.VK_3:
 				return ControllerOrder.DOWNRIGHT;
-				break;
 				default:
-					break;
+				return null;
 		}
 	}
 
