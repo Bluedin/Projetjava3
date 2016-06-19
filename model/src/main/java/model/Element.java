@@ -7,7 +7,9 @@ public abstract class Element {
 	protected String sprite;
 	
 	public Element(int X, int Y, String sprite){
-		
+		this.X = X;
+		this.Y = Y;
+		this.sprite = sprite;
 	}
 
 	public int getX() {

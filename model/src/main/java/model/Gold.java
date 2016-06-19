@@ -5,7 +5,7 @@ public class Gold extends Element implements IDisappear {
 	private int valeur;
 
 	public Gold(int X, int Y) {
-		super(X, Y, "G");
+		super(X, Y, "/sprite/purse.png");
 		valeur = 100;
 		// TODO Auto-generated constructor stub
 	}

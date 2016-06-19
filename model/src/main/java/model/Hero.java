@@ -8,7 +8,7 @@ public class Hero extends Element{
 	private Spell spell;
 	
 	public Hero(int X, int Y) {
-		super(X, Y, "HR");
+		super(X, Y, "/sprite/lorann_r.png");
 		this.score = 0;
 		orientation = Orientation.RIGHT;
 		spell = new Spell(-5, -5);

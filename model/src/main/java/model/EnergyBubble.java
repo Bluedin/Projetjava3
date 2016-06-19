@@ -5,7 +5,7 @@ public class EnergyBubble extends Element implements IDisappear{
 	private Permeability permeability = Permeability.PENETRABLE;
 	
 	public EnergyBubble(int X, int Y){
-		super(X, Y, "B");
+		super(X, Y, "/sprite/crystal_ball.png");
 	}
 
 	public Permeability getPermeability(){
