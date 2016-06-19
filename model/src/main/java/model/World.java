@@ -22,4 +22,19 @@ public class World {
 		
 	}
 	
+	public void addElement(String key, int X, int Y){
+		switch(key){
+		case "H":
+			this.elementList.add(new Hero(X, Y));
+			this.elementList.add(new Background(X, Y));
+			break;
+		case "E":
+			this.elementList.add(new Ennemy(X, Y, "1"));
+			break;
+		
+		}
+		
+		
+	}
+	
 }

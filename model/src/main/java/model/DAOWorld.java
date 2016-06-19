@@ -69,7 +69,7 @@ class DAOWorld{
 	public String find(final int id) {
 
 		try {
-			final String sql = "{call helloworldById(?)}";
+			final String sql = "{call WorldByLevel(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
 			call.setInt(1, id);
 			call.execute();
@@ -92,7 +92,7 @@ class DAOWorld{
 	public String find(final String key) {
 
 		try {
-			final String sql = "{call helloworldByKey(?)}";
+			final String sql = "{call WorldByKey(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
 			call.setString(1, key);
 			call.execute();
