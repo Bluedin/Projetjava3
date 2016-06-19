@@ -88,8 +88,9 @@ public class Spell extends Element implements IDisappear, IMobile{
 	}
 
 	public void disappear(Hero hero) {
-		// TODO Auto-generated method stub
-		
+		this.setX(-5);
+		this.setY(-5);
+		hero.gainSpell();
 	}
 
 	public void disappear(ExitDoor exitDoor) {

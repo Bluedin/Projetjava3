@@ -28,12 +28,17 @@ public class Hero extends Element implements IMobile{
 		return this.hasSpell;
 	}
 	
+	public void gainSpell(){
+		hasSpell = true;
+	}
+	
 	public void gainScore(int valeur){
 		score += valeur;
 	}
 	
 	public void shoot(){
-		
+		this.spell.moveGlobal(this.spell, this.orientation);
+		hasSpell = false;
 	}
 
 	public void moveDown(Element element) {
