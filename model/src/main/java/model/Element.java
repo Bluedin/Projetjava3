@@ -36,6 +36,4 @@ public abstract class Element {
 		this.sprite = sprite;
 	}
 	
-	
-	
 }

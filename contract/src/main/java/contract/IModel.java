@@ -5,14 +5,13 @@ import java.util.Observable;
 /**
  * The Interface IModel.
  *
- * @author Jean-Aymeric Diet
  */
 public interface IModel {
 
 	/**
 	 * Gets the world.
 	 *
-	 * @return the world sous forme de tableau de strng
+	 * @return the world as a tab of string
 	 */
 	String[][] getWorld();
 

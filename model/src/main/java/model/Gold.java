@@ -3,6 +3,7 @@ package model;
 public class Gold extends Element implements IDisappear {
 
 	private int valeur;
+	private Permeability permeability = Permeability.PENETRABLE;
 
 	public Gold(int X, int Y) {
 		super(X, Y, "/sprite/purse.png");
@@ -25,6 +26,10 @@ public class Gold extends Element implements IDisappear {
 	public void disappear(ExitDoor exitDoor) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public Permeability getPermeability(){
+		return this.permeability;
 	}
 
 }
