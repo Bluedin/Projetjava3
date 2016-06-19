@@ -10,101 +10,49 @@ import java.sql.SQLException;
  *
  * @author Jean-Aymeric Diet
  */
-class DAOWorld{
-	
+class DAOWorld {
+
 	private final Connection connection;
 
 	/**
 	 * Instantiates a new DAO hello world.
 	 *
 	 * @param connection
-	 *          the connection
+	 *            the connection
 	 * @throws SQLException
-	 *           the SQL exception
+	 *             the SQL exception
 	 */
 	public DAOWorld(final Connection connection) throws SQLException {
 		this.connection = connection;
 	}
 
-	
 	protected Connection getConnection() {
 		return this.connection;
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#create(model.Entity)
-	 */
-	public boolean create() {
-		// Not implemented
-		return false;
-	}
 
 	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#delete(model.Entity)
+	 * Use the stored procedure to get the map of the level
+	 * And create the level corresponding
 	 */
-	public boolean delete() {
-		// Not implemented
-		return false;
-	}
+	public World find(final int id) {
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#update(model.Entity)
-	 */
-	public boolean update() {
-		// Not implemented
-		return false;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(int)
-	 */
-	public String find(final int id) {
-
+		World world = new World();
 		try {
 			final String sql = "{call WorldByLevel(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
 			call.setInt(1, id);
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				
+			while (resultSet.next()) {
+				for(int i = 1; i <= resultSet.getString(2).length(); i++){
+					world.addElement(resultSet.getString(2).substring(i - 1, i), i, resultSet.getInt(1));
+				}
 			}
 			return null;
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(java.lang.String)
-	 */
-	public String find(final String key) {
-
-		try {
-			final String sql = "{call WorldByKey(?)}";
-			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setString(1, key);
-			call.execute();
-			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				
-			}
-			return null;
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
+		return world;
 	}
 
 }

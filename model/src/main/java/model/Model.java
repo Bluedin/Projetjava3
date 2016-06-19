@@ -20,7 +20,8 @@ public class Model extends Observable implements IModel {
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.world = null;
+		
+		
 	}
 
 	/*
@@ -46,17 +47,15 @@ public class Model extends Observable implements IModel {
 	}
 
 	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
+	 * 
 	 */
 	public void loadWorld(int key) {
-		/*try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setMessage(daoHelloWorld.find(key).getMessage());
+		try {
+			final DAOWorld daoWorld = new DAOWorld(DBConnection.getInstance().getConnection());
+			this.setWorld(daoWorld.find(key));
 		} catch (final SQLException e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 
 	/*
