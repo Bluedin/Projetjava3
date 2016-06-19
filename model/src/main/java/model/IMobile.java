@@ -6,6 +6,6 @@ public interface IMobile {
 	void moveLeft(Element element);
 	void moveUp(Element element);
 	void moveRight(Element element);
-	void moveGlobal(Element element);
+	void moveGlobal(Element element, Orientation orientation);
 	
 }

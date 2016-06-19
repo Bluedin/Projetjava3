@@ -2,6 +2,6 @@ package model;
 
 public interface IBehaviour {
 
-	public Ennemy move(Ennemy ennemy, Hero hero);
+	public void move(Ennemy ennemy, Hero hero);
 	
 }
