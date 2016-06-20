@@ -31,33 +31,34 @@ public class World {
 
 	public void animate() {
 
-		int i = 0;
 		int x = 0;
 		int y = 0;
 		boolean condition = true;
 		boolean isBlocking = false;
-		for (i = 0; i < this.ennemyList.size(); i++) {
-			x = this.ennemyList.get(i).getX();
-			y = this.ennemyList.get(i).getY();
-			this.ennemyList.get(i).move(hero);
+		for (Ennemy ennemy : ennemyList) {
+			x = ennemy.getX();
+			y = ennemy.getY();
+			ennemy.move(hero);
 			while (condition) {
 				for (Element element : elementList) {
-					if (element.getX() == this.ennemyList.get(i).getX()
-							&& element.getY() == this.ennemyList.get(i).getY() && element instanceof IPermeable) {
+					if (element.getX() == ennemy.getX() + 1 && element.getY() == ennemy.getY() - 1
+							&& element instanceof IPermeable) {
 						if (element instanceof EnergyBubble || element instanceof Wall || element instanceof Gold) {
 							isBlocking = true;
 						} else if (element instanceof Background && !isBlocking) {
 							condition = false;
 						}
 					}
+					if (isBlocking) {
+						ennemy.setX(x);
+						ennemy.setY(y);
+						ennemy.move(hero);
+					}
 				}
-				if (isBlocking) {
-					this.ennemyList.get(i).setX(x);
-					this.ennemyList.get(i).setY(y);
-					this.ennemyList.get(i).move(hero);
-				}
+
 			}
-			i++;
+			condition = true;
+			isBlocking = false;
 		}
 
 		if (!this.spellOrNot()) {
@@ -110,7 +111,6 @@ public class World {
 		case "l":
 			this.hero = new Hero(X, Y);
 			this.mobileList.add(this.hero.getSpell());
-			this.erasableList.add(this.hero.getSpell());
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
@@ -173,16 +173,21 @@ public class World {
 	public boolean isPenetrable(int X, int Y) {
 		int i = 0;
 		int j = 0;
-		for (Element element : this.elementList) {
-			if (element.getX() == X && element.getY() == Y && i == 0) {
-				i++;
-				j++;
-			} else if (i == 0) {
-				j++;
+		if (this.exitDoor.getX() == X && this.exitDoor.getY() == Y) {
+			return this.exitDoor.getPermeability() == Permeability.PENETRABLE;
+		} else {
+			for (Element element : this.elementList) {
+				if (element.getX() == X - 1 && element.getY() == Y && i == 0) {
+					i++;
+					j++;
+				} else if (i == 0) {
+					j++;
+				}
 			}
+
+			return this.immobileList.get(j).getPermeability() == Permeability.PENETRABLE;
 		}
 
-		return this.immobileList.get(j).getPermeability() == Permeability.PENETRABLE;
 	}
 
 	public boolean spellOrNot() {
@@ -234,9 +239,9 @@ public class World {
 				}
 			}
 		}
-		this.erasableList.get(j).disappear();
-		this.erasableList.get(j).disappear(this.exitDoor);
-		this.erasableList.get(j).disappear(this.hero);
+		this.erasableList.get(j-1).disappear();
+		this.erasableList.get(j-1).disappear(this.exitDoor);
+		this.erasableList.get(j-1).disappear(this.hero);
 
 	}
 

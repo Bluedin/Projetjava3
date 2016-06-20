@@ -3,7 +3,7 @@ package model;
 public class Normal implements IBehaviour, IMobile {
 
 	public void move(Ennemy ennemy, Hero hero) {
-		int randomNumber = (int) Math.random() * 8;
+		int randomNumber = (int) (Math.random() * 8);
 		switch (randomNumber) {
 		case 0:
 			moveGlobal(ennemy, Orientation.UP);

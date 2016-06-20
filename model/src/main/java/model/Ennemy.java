@@ -25,6 +25,7 @@ public class Ennemy extends Element implements IDisappear {
 		this.setSprite(sprite);
 		this.behaviour = new Normal();
 		this.nBehaviour = true;
+		this.life = true;
 		// TODO Auto-generated constructor stub
 	}
 

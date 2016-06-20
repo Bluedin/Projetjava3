@@ -45,6 +45,8 @@ public class Hero extends Element implements IMobile{
 	}
 	
 	public void shoot(){
+		this.spell.setX(this.getX());
+		this.spell.setY(this.getY());
 		this.spell.setOrientation(this.orientation);
 		this.spell.moveGlobal(this.spell, this.orientation);
 		hasSpell = false;

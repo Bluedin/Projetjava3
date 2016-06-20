@@ -45,13 +45,15 @@ public class Controller implements IController {
 			
 			try 
 			{
-			    Thread.sleep(250);
+			    Thread.sleep(100);
 			} 
 			
 			catch(InterruptedException ex) 
 			{
 			    Thread.currentThread().interrupt();
 			}
+			
+			
 		
 	}
 		}
@@ -180,6 +182,7 @@ public class Controller implements IController {
 				break;
 				
 		}
+		this.view.printWorld(model);
 	}
 
 }
