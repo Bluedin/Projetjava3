@@ -79,7 +79,7 @@ public class Controller implements IController {
 		this.model = model;
 	}
 	
-	private void spellTest() {
+	private void spellTest() { // test si sort ou pas
 		if (model.spellOrNot()) {
 			model.shoot();
 		}
