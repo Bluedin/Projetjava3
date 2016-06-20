@@ -6,7 +6,7 @@ public class Spell extends Element implements IDisappear, IMobile{
 	private Orientation orientation;
 	
 	public Spell(int X, int Y) {
-		super(X, Y, "/sprite/fireball_1.png");
+		super(X, Y, "sprite/fireball_1.png");
 		state = 0;
 	}
 	
@@ -95,23 +95,23 @@ public class Spell extends Element implements IDisappear, IMobile{
 		}
 		switch(state){
 		case 0:
-			this.setSprite("/sprite/fireball_2.png");
+			this.setSprite("sprite/fireball_2.png");
 			this.state ++;
 			break;
 		case 1:
-			this.setSprite("/sprite/fireball_3.png");
+			this.setSprite("sprite/fireball_3.png");
 			this.state ++;
 			break;
 		case 2:
-			this.setSprite("/sprite/fireball_4.png");
+			this.setSprite("sprite/fireball_4.png");
 			this.state ++;
 			break;
 		case 3:
-			this.setSprite("/sprite/fireball_5.png");
+			this.setSprite("sprite/fireball_5.png");
 			this.state ++;
 			break;
 		case 4:
-			this.setSprite("/sprite/fireball_1.png");
+			this.setSprite("sprite/fireball_1.png");
 			this.state = 0;
 			break;
 		}

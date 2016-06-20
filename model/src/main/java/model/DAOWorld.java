@@ -48,7 +48,7 @@ class DAOWorld {
 					world.addElement(resultSet.getString(2).substring(i - 1, i), i, resultSet.getInt(1));
 				}
 			}
-			return null;
+			return world;
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}

@@ -10,16 +10,16 @@ public class Ennemy extends Element implements IDisappear {
 		super(X, Y, null);
 		switch (sprite) {
 		case "1":
-			sprite = "/sprite/monster_1.png";
+			sprite = "sprite/monster_1.png";
 			break;
 		case "2":
-			sprite = "/sprite/monster_2.png";
+			sprite = "sprite/monster_2.png";
 			break;
 		case "3":
-			sprite = "/sprite/monster_3.png";
+			sprite = "sprite/monster_3.png";
 			break;
 		case "4":
-			sprite = "/sprite/monster_4.png";
+			sprite = "sprite/monster_4.png";
 			break;
 		}
 		this.setSprite(sprite);

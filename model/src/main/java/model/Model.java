@@ -13,7 +13,7 @@ import contract.IModel;
  */
 public class Model extends Observable implements IModel {
 
-	/** The message. */
+	/**  */
 	private World world;
 
 	/**
@@ -42,8 +42,6 @@ public class Model extends Observable implements IModel {
 	 */
 	private void setWorld(final World world) {
 		this.world = world;
-		this.setChanged();
-		this.notifyObservers();
 	}
 
 	/*
@@ -89,9 +87,13 @@ public class Model extends Observable implements IModel {
 
 	public void move_global(ControllerOrder direction) {
 		this.world.move_global(direction);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public void animate() {
 		this.world.animate();
+		this.setChanged();
+		this.notifyObservers();
 	}
 }

@@ -16,5 +16,5 @@ public enum ControllerOrder {
 	UPRIGHT,
 	DOWNLEFT,
 	DOWNRIGHT,
-	SHOOT
+	SHOOT;
 }

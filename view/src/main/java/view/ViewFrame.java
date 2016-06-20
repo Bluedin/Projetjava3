@@ -137,7 +137,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.addKeyListener(this);
 		this.viewPanel = new ViewPanel(this);
 		this.setContentPane(this.viewPanel);
-		this.setSize(640,384);
+		this.setSize(720,480);
 		this.setLocationRelativeTo(null);
 		this.setBackground(Color.BLACK);
 	}
@@ -168,6 +168,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(final KeyEvent e) {
+		System.out.print(e);
 		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 

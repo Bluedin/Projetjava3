@@ -9,7 +9,7 @@ public class Hero extends Element implements IMobile{
 	private boolean hasSpell;
 	
 	public Hero(int X, int Y) {
-		super(X, Y, "/sprite/lorann_r.png");
+		super(X, Y, "sprite/lorann_r.png");
 		this.score = 0;
 		this.orientation = Orientation.RIGHT;
 		this.spell = new Spell(-5, -5);
@@ -72,46 +72,46 @@ public class Hero extends Element implements IMobile{
 		case DOWN:
 			moveDown(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_b.png");
+			this.setSprite("sprite/lorann_b.png");
 			break;
 		case LEFT:
 			moveLeft(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_l.png");
+			this.setSprite("sprite/lorann_l.png");
 			break;
 		case LEFT_DOWN:
 			moveLeft(element);
 			moveDown(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_bl.png");
+			this.setSprite("sprite/lorann_bl.png");
 			break;
 		case RIGHT:
 			moveRight(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_r.png");
+			this.setSprite("sprite/lorann_r.png");
 			break;
 		case RIGHT_DOWN:
 			moveRight(element);
 			moveDown(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_br.png");
+			this.setSprite("sprite/lorann_br.png");
 			break;
 		case UP:
 			moveUp(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_u.png");
+			this.setSprite("sprite/lorann_u.png");
 			break;
 		case UP_LEFT:
 			moveUp(element);
 			moveLeft(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_ul.png");
+			this.setSprite("sprite/lorann_ul.png");
 			break;
 		case UP_RIGHT:
 			moveUp(element);
 			moveRight(element);
 			this.orientation = orientation;
-			this.setSprite("/sprite/lorann_ur.png");
+			this.setSprite("sprite/lorann_ur.png");
 			break;
 		default:
 			break;

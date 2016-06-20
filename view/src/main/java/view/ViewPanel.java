@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.IOException;
@@ -72,7 +73,9 @@ class ViewPanel extends JPanel implements Observer {
 	 */
 	@Override
 	protected void paintComponent(final Graphics graphics) {
+		graphics.setColor(new Color(0, 0, 0));
 		graphics.clearRect(0, 0, this.getWidth(), this.getHeight());
+		graphics.fillRect(0, 0, this.getWidth(), this.getHeight());
 		try {
 			this.viewBuilder.createImage(graphics);
 		} catch (IOException e) {

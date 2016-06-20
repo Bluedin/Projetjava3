@@ -22,7 +22,7 @@ public class World {
 		mobileList = new ArrayList<IMobile>();
 		erasableList = new ArrayList<IDisappear>();
 		ennemyList = new ArrayList<Ennemy>();
-		
+
 	}
 
 	public String[][] getWorld() {
@@ -35,8 +35,8 @@ public class World {
 		int x = 0;
 		int y = 0;
 		boolean condition = true;
-		boolean isBlocking= false;
-		while (ennemyList.get(i) != null) {
+		boolean isBlocking = false;
+		for (i = 0; i < this.ennemyList.size(); i++) {
 			x = this.ennemyList.get(i).getX();
 			y = this.ennemyList.get(i).getY();
 			this.ennemyList.get(i).move(hero);
@@ -44,14 +44,14 @@ public class World {
 				for (Element element : elementList) {
 					if (element.getX() == this.ennemyList.get(i).getX()
 							&& element.getY() == this.ennemyList.get(i).getY() && element instanceof IPermeable) {
-						if(element instanceof EnergyBubble || element instanceof Wall || element instanceof Gold){
+						if (element instanceof EnergyBubble || element instanceof Wall || element instanceof Gold) {
 							isBlocking = true;
-						}else if(element instanceof Background && !isBlocking){
+						} else if (element instanceof Background && !isBlocking) {
 							condition = false;
 						}
 					}
 				}
-				if(isBlocking){
+				if (isBlocking) {
 					this.ennemyList.get(i).setX(x);
 					this.ennemyList.get(i).setY(y);
 					this.ennemyList.get(i).move(hero);
@@ -85,8 +85,8 @@ public class World {
 	public String[][] generateMapString() {
 		String world[][] = new String[20][12];
 		for (Element element : this.elementList) {
-			if (element.getX() - 1 < 20 && element.getX() - 1 >= 0 && element.getY() - 1 < 12
-					&& element.getY() - 1 >= 0) {
+			if (element.getX() - 1 < 20 && element.getX() - 1 >= 0 && element.getY() - 1 < 12 && element.getY() - 1 >= 0
+					&& element.getSprite() != null) {
 				world[element.getX() - 1][element.getY() - 1] = element.getSprite();
 			}
 		}
@@ -97,7 +97,10 @@ public class World {
 		}
 		world[exitDoor.getX() - 1][exitDoor.getY() - 1] = exitDoor.getSprite();
 		world[hero.getX() - 1][hero.getY() - 1] = hero.getSprite();
-		world[hero.getSpell().getX() - 1][hero.getSpell().getY() - 1] = hero.getSpell().getSprite();
+		if (hero.getSpell().getX() < 20 && hero.getSpell().getX() >= 0 && hero.getSpell().getY() < 12
+				&& hero.getSpell().getY() >= 0) {
+			world[hero.getSpell().getX() - 1][hero.getSpell().getY() - 1] = hero.getSpell().getSprite();
+		}
 		return world;
 	}
 
@@ -170,13 +173,13 @@ public class World {
 	public boolean isPenetrable(int X, int Y) {
 		int i = 0;
 		int j = 0;
-		while (this.elementList.get(i).getX() != X || this.elementList.get(i).getY() != Y
-				&& this.elementList.get(i).getClass() == Hero.class && this.elementList.get(i).getClass() == Spell.class
-				&& this.elementList.get(i).getClass() == Ennemy.class) {
-			i++;
-		}
-		while (this.immobileList.get(j) != this.elementList.get(i) || this.immobileList.get(j) != null) {
-			j++;
+		for (Element element : this.elementList) {
+			if (element.getX() == X && element.getY() == Y && i == 0) {
+				i++;
+				j++;
+			} else if (i == 0) {
+				j++;
+			}
 		}
 
 		return this.immobileList.get(j).getPermeability() == Permeability.PENETRABLE;
@@ -220,19 +223,19 @@ public class World {
 		default:
 			break;
 		}
-		this.hero.moveGlobal(null, orientation);
+		this.hero.moveGlobal(this.hero, orientation);
 		int i = 0;
 		int j = 0;
-		while (this.elementList.get(i).getX() != this.hero.getX() || this.elementList.get(i).getY() != this.hero.getY()
-				|| this.elementList.get(i) instanceof IDisappear) {
-			i++;
-		}
-		while (this.erasableList.get(j) != this.elementList.get(i) || this.erasableList.get(j) != null) {
-			j++;
+		for (Element element : elementList) {
+			if (element instanceof IDisappear && i == 0) {
+				j++;
+				if (element.getX() == this.hero.getX() && element.getY() == this.hero.getY()) {
+					i++;
+				}
+			}
 		}
 		this.erasableList.get(j).disappear();
 		this.erasableList.get(j).disappear(this.exitDoor);
-		;
 		this.erasableList.get(j).disappear(this.hero);
 
 	}

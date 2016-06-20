@@ -36,21 +36,21 @@ public class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
-			case KeyEvent.VK_8:
+			case KeyEvent.VK_NUMPAD8:
 				return ControllerOrder.UP;
-			case KeyEvent.VK_2:
+			case KeyEvent.VK_NUMPAD2:
 				return ControllerOrder.DOWN;
-			case KeyEvent.VK_4:
+			case KeyEvent.VK_NUMPAD4:
 				return ControllerOrder.LEFT;
-			case KeyEvent.VK_6:
+			case KeyEvent.VK_NUMPAD6:
 				return ControllerOrder.RIGHT;
-			case KeyEvent.VK_7:
+			case KeyEvent.VK_NUMPAD7:
 				return ControllerOrder.UPLEFT;
-			case KeyEvent.VK_9:
+			case KeyEvent.VK_NUMPAD9:
 				return ControllerOrder.UPRIGHT;
-			case KeyEvent.VK_1:
+			case KeyEvent.VK_NUMPAD1:
 				return ControllerOrder.DOWNLEFT;
-			case KeyEvent.VK_3:
+			case KeyEvent.VK_NUMPAD3:
 				return ControllerOrder.DOWNRIGHT;
 			case KeyEvent.VK_SPACE:
 				return ControllerOrder.SHOOT;
