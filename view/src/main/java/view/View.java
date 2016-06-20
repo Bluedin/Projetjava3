@@ -52,6 +52,8 @@ public class View implements IView, Runnable {
 				return ControllerOrder.DOWNLEFT;
 			case KeyEvent.VK_3:
 				return ControllerOrder.DOWNRIGHT;
+			case KeyEvent.VK_SPACE:
+				return ControllerOrder.SHOOT;
 				default:
 				return null;
 		}
