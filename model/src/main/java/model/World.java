@@ -20,7 +20,7 @@ public class World {
 	}
 
 	public void getWorld() {
-
+		
 	}
 
 	public void animate() {
@@ -111,27 +111,44 @@ public class World {
 	}
 
 	public boolean spellOrNot() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int positionSpellX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int positionSpellY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.hero.getHasSpell();
 	}
 
 	public void shoot() {
-		// TODO Auto-generated method stub
-
+		this.hero.shoot();
 	}
 
 	public void move_global(ControllerOrder direction) {
-		// TODO Auto-generated method stub
+		Orientation orientation = null;
+		switch(direction){
+		case UP:
+			orientation = Orientation.UP;
+			break;
+		case DOWN:
+			orientation = Orientation.DOWN;
+			break;
+		case LEFT:
+			orientation = Orientation.LEFT;
+			break;
+		case RIGHT:
+			orientation = Orientation.RIGHT;
+			break;
+		case UPLEFT:
+			orientation = Orientation.UP_LEFT;
+			break;
+		case UPRIGHT:
+			orientation = Orientation.UP_RIGHT;
+			break;
+		case DOWNLEFT:
+			orientation = Orientation.LEFT_DOWN;
+			break;
+		case DOWNRIGHT:
+			orientation = Orientation.RIGHT_DOWN;
+			break;
+		default:
+			break;
+		}
+		this.hero.moveGlobal(null, orientation);
 
 	}
 
