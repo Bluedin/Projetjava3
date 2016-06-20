@@ -1,6 +1,6 @@
 package model;
 
-public class Gold extends Element implements IDisappear {
+public class Gold extends Element implements IDisappear, IPermeable {
 
 	private int valeur;
 	private Permeability permeability = Permeability.PENETRABLE;

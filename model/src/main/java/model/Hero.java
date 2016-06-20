@@ -32,6 +32,10 @@ public class Hero extends Element implements IMobile{
 		hasSpell = true;
 	}
 	
+	public Spell getSpell(){
+		return this.spell;
+	}
+	
 	public void gainScore(int valeur){
 		score += valeur;
 	}

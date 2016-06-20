@@ -1,6 +1,6 @@
 package model;
 
-public class Wall extends Element {
+public class Wall extends Element implements IPermeable{
 
 	private Permeability permeability = Permeability.BLOCKING;
 	

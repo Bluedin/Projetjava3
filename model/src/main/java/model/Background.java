@@ -1,6 +1,6 @@
 package model;
 
-public class Background extends Element {
+public class Background extends Element implements IPermeable{
 
 	private Permeability permeability = Permeability.PENETRABLE;
 

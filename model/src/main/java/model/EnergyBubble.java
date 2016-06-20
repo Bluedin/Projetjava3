@@ -1,6 +1,6 @@
 package model;
 
-public class EnergyBubble extends Element implements IDisappear{
+public class EnergyBubble extends Element implements IDisappear, IPermeable{
 	
 	private Permeability permeability = Permeability.PENETRABLE;
 	

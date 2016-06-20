@@ -7,6 +7,12 @@ import contract.ControllerOrder;
 public class World {
 
 	private ArrayList<Element> elementList;
+	private ArrayList<IPermeable> immobileList;
+	private ArrayList<IMobile> mobileList;
+	private ArrayList<IDisappear> erasableList;
+	private ArrayList<Ennemy> ennemyList;
+	private ExitDoor exitDoor;
+	private Hero hero;
 	private int nbrEnnemy = 1;
 
 	public World() {
@@ -26,71 +32,82 @@ public class World {
 	}
 
 	public void addElement(String key, int X, int Y) {
+		Background background = new Background(X, Y);
 		switch (key) {
 		case "l":
-			this.elementList.add(new Hero(X, Y));
-			this.elementList.add(new Background(X, Y));
+			this.hero = new Hero(X, Y);
+			this.mobileList.add(this.hero.getSpell());
+			this.immobileList.add(background);
+			this.elementList.add(background);
 			break;
 		case "e":
-			this.elementList.add(new Ennemy(X, Y, "" + this.nbrEnnemy));
-			this.elementList.add(new Background(X, Y));
+			this.ennemyList.add(new Ennemy(X, Y, "" + this.nbrEnnemy));
+			this.immobileList.add(background);
+			this.elementList.add(background);
 			this.nbrEnnemy++;
 			break;
 		case "g":
-			this.elementList.add(new Gold(X, Y));
-			this.elementList.add(new Background(X, Y));
+			Gold gold = new Gold(X, Y);
+			this.erasableList.add(gold);
+			this.immobileList.add(gold);
+			this.elementList.add(gold);
+			this.immobileList.add(background);
+			this.elementList.add(background);
 			break;
 		case "b":
-			this.elementList.add(new EnergyBubble(X, Y));
-			this.elementList.add(new Background(X, Y));
+			EnergyBubble energyBubble = new EnergyBubble(X, Y);
+			this.erasableList.add(energyBubble);
+			this.immobileList.add(background);
+			this.elementList.add(background);
 			break;
 		case "x":
-			this.elementList.add(new ExitDoor(X, Y));
+			this.exitDoor = new ExitDoor(X, Y);
 			break;
 		case "h":
-			this.elementList.add(new Wall(X, Y, "1"));
+			Wall wall1 = new Wall(X, Y, "1");
+			this.immobileList.add(wall1);
+			this.elementList.add(wall1);
 			break;
 		case "v":
-			this.elementList.add(new Wall(X, Y, "2"));
+			Wall wall2 = new Wall(X, Y, "2");
+			this.immobileList.add(wall2);
+			this.elementList.add(wall2);
 			break;
 		case "c":
-			this.elementList.add(new Wall(X, Y, "3"));
+			Wall wall3 = new Wall(X, Y, "3");
+			this.immobileList.add(wall3);
+			this.elementList.add(wall3);
 			break;
 		case "f":
-			this.elementList.add(new Background(X, Y));
+			this.immobileList.add(background);
+			this.elementList.add(background);
 			break;
 		}
 
 	}
 
 	public int positionHeroX() {
-		int i = 0;
-		while (this.elementList.get(i).getClass() != Hero.class) {
-			i++;
-		}
-		return this.elementList.get(i).getX();
+		return this.hero.getX();
 	}
 
 	public int positionHeroY() {
-		int i = 0;
-		while (this.elementList.get(i).getClass() != Hero.class) {
-			i++;
-		}
-		return this.elementList.get(i).getY();
+		return this.hero.getY();
 	}
 
 	public boolean isPenetrable(int X, int Y) {
 		int i = 0;
+		int j = 0;
 		while (this.elementList.get(i).getX() != X && this.elementList.get(i).getY() != Y
 				&& this.elementList.get(i).getClass() == Hero.class
 				&& this.elementList.get(i).getClass() == Spell.class
 				&& this.elementList.get(i).getClass() == Ennemy.class) {
 			i++;
 		}
+		while (this.immobileList.get(j) == this.elementList.get(i)){
+			j++;
+		}
 		
-		
-		
-		return this.elementList.get(i) != null;
+		return this.immobileList.get(j).getPermeability() == Permeability.PENETRABLE;
 	}
 
 	public boolean spellOrNot() {
