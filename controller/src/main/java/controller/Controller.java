@@ -1,5 +1,9 @@
 package controller;
 
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.Timer;
+
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
@@ -37,8 +41,16 @@ public class Controller implements IController {
 	 */
 	public void control() {
 		while (true) {
-		model.animate();
-		view.printWorld(model);
+			
+			model.animate();
+			view.printWorld(model);
+			
+			try {
+			    Thread.sleep(250);
+			} catch(InterruptedException ex) {
+			    Thread.currentThread().interrupt();
+			}
+		
 	}
 		}
 	/**
