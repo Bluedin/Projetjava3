@@ -45,9 +45,13 @@ public class Controller implements IController {
 			model.animate();
 			view.printWorld(model);
 			
-			try {
+			try 
+			{
 			    Thread.sleep(250);
-			} catch(InterruptedException ex) {
+			} 
+			
+			catch(InterruptedException ex) 
+			{
 			    Thread.currentThread().interrupt();
 			}
 		
