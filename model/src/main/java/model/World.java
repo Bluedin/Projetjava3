@@ -19,16 +19,32 @@ public class World {
 
 	}
 
-	public void getWorld() {
-		
+	public String[][] getWorld() {
+
+		return generateMapString();
 	}
 
 	public void animate() {
 
 	}
 
-	public void generateMapString() {
-
+	public String[][] generateMapString() {
+		String world[][] = new String[20][12];
+		for (Element element : this.elementList) {
+			if (element.getX() - 1 < 20 && element.getX() - 1 >= 0 && element.getY() - 1 < 12
+					&& element.getY() - 1 >= 0) {
+				world[element.getX() - 1][element.getY() - 1] = element.getSprite();
+			}
+		}
+		for (Ennemy ennemy : this.ennemyList) {
+			if (ennemy.getX() - 1 < 20 && ennemy.getX() - 1 >= 0 && ennemy.getY() - 1 < 12 && ennemy.getY() - 1 >= 0) {
+				world[ennemy.getX() - 1][ennemy.getY() - 1] = ennemy.getSprite();
+			}
+		}
+		world[exitDoor.getX()-1][exitDoor.getY()-1] = exitDoor.getSprite();
+		world[hero.getX()-1][hero.getY()-1] = hero.getSprite();
+		world[hero.getSpell().getX()][hero.getSpell().getY()] = hero.getSpell().getSprite();
+		return world;
 	}
 
 	public void addElement(String key, int X, int Y) {
@@ -57,6 +73,8 @@ public class World {
 		case "b":
 			EnergyBubble energyBubble = new EnergyBubble(X, Y);
 			this.erasableList.add(energyBubble);
+			this.immobileList.add(energyBubble);
+			this.elementList.add(energyBubble);
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
@@ -98,15 +116,14 @@ public class World {
 		int i = 0;
 		int j = 0;
 		while (this.elementList.get(i).getX() != X && this.elementList.get(i).getY() != Y
-				&& this.elementList.get(i).getClass() == Hero.class
-				&& this.elementList.get(i).getClass() == Spell.class
+				&& this.elementList.get(i).getClass() == Hero.class && this.elementList.get(i).getClass() == Spell.class
 				&& this.elementList.get(i).getClass() == Ennemy.class) {
 			i++;
 		}
-		while (this.immobileList.get(j) == this.elementList.get(i)){
+		while (this.immobileList.get(j) == this.elementList.get(i)) {
 			j++;
 		}
-		
+
 		return this.immobileList.get(j).getPermeability() == Permeability.PENETRABLE;
 	}
 
@@ -120,7 +137,7 @@ public class World {
 
 	public void move_global(ControllerOrder direction) {
 		Orientation orientation = null;
-		switch(direction){
+		switch (direction) {
 		case UP:
 			orientation = Orientation.UP;
 			break;

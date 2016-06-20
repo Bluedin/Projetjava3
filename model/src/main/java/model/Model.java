@@ -30,7 +30,7 @@ public class Model extends Observable implements IModel {
 	 * @see contract.IModel#getMessage()
 	 */
 	public String[][] getWorld() {
-		String world[][] = null;
+		String world[][] = this.world.getWorld();
 		return world;
 	}
 
@@ -68,47 +68,30 @@ public class Model extends Observable implements IModel {
 	}
 
 	public int positionHeroX() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.world.positionHeroX();
 	}
 
 	public int positionHeroY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.world.positionHeroY();
 	}
 
 	public boolean isPenetrable(int X, int Y) {
-		// TODO Auto-generated method stub
-		return false;
+		return this.world.isPenetrable(X, Y);
 	}
 
 	public boolean spellOrNot() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public int positionSpellX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int positionSpellY() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.world.spellOrNot();
 	}
 
 	public void shoot() {
-		// TODO Auto-generated method stub
-		
+		this.world.shoot();
 	}
 
 	public void move_global(ControllerOrder direction) {
-		// TODO Auto-generated method stub
-		
+		this.world.move_global(direction);
 	}
 
 	public void animate() {
-		// TODO Auto-generated method stub
-		
+		this.world.animate();
 	}
 }
