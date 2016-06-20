@@ -65,6 +65,8 @@ public class View implements IView, Runnable {
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
 	public void printWorld(IModel model) {
+		model.getWorld();
+		
 	}
 
 	/*
