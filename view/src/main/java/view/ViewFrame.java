@@ -27,6 +27,7 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The controller. */
 	private IController				controller;
+	private ViewPanel viewPanel;
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
 
@@ -134,7 +135,8 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
-		this.setContentPane(new ViewPanel(this));
+		this.viewPanel = new ViewPanel(this);
+		this.setContentPane(this.viewPanel);
 		this.setSize(640,384);
 		this.setLocationRelativeTo(null);
 		this.setBackground(Color.BLACK);
@@ -148,7 +150,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 */
 	public void printWorld(IModel model) {
 
-		
+		this.viewPanel.getViewBuilder().get_elements(model.getWorld());
 	}
 
 	/*
