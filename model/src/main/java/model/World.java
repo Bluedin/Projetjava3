@@ -17,6 +17,12 @@ public class World {
 
 	public World() {
 
+		elementList = new ArrayList<Element>();
+		immobileList = new ArrayList<IPermeable>();
+		mobileList = new ArrayList<IMobile>();
+		erasableList = new ArrayList<IDisappear>();
+		ennemyList = new ArrayList<Ennemy>();
+		
 	}
 
 	public String[][] getWorld() {

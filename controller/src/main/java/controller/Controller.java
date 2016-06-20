@@ -40,6 +40,8 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
+		
+		model.loadWorld(1);
 		while (true) {
 			
 			model.animate();
