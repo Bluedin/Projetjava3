@@ -20,11 +20,59 @@ public class World {
 	}
 
 	public String[][] getWorld() {
-
 		return generateMapString();
 	}
 
 	public void animate() {
+
+		int i = 0;
+		int x = 0;
+		int y = 0;
+		boolean condition = true;
+		boolean isBlocking= false;
+		while (ennemyList.get(i) != null) {
+			x = this.ennemyList.get(i).getX();
+			y = this.ennemyList.get(i).getY();
+			this.ennemyList.get(i).move(hero);
+			while (condition) {
+				for (Element element : elementList) {
+					if (element.getX() == this.ennemyList.get(i).getX()
+							&& element.getY() == this.ennemyList.get(i).getY() && element instanceof IPermeable) {
+						if(element instanceof EnergyBubble || element instanceof Wall || element instanceof Gold){
+							isBlocking = true;
+						}else if(element instanceof Background && !isBlocking){
+							condition = false;
+						}
+					}
+				}
+				if(isBlocking){
+					this.ennemyList.get(i).setX(x);
+					this.ennemyList.get(i).setY(y);
+					this.ennemyList.get(i).move(hero);
+				}
+			}
+			i++;
+		}
+
+		if (!this.spellOrNot()) {
+			this.hero.getSpell().moveGlobal(this.hero.getSpell(), null);
+			for (Element element : elementList) {
+				if (element.getX() == this.hero.getSpell().getX() && element.getY() == this.hero.getSpell().getY()
+						&& element instanceof IPermeable && !(element instanceof Background)) {
+					this.hero.getSpell().setOrientation(this.hero.getSpell().getOrientation());
+					this.hero.getSpell().moveGlobal(this.hero.getSpell(), null);
+					this.hero.getSpell().moveGlobal(this.hero.getSpell(), null);
+				}
+			}
+			for (Ennemy ennemy : ennemyList) {
+				if (ennemy.getX() == this.hero.getSpell().getX() && ennemy.getY() == this.hero.getSpell().getY()) {
+					ennemy.disappear();
+				}
+			}
+			if (this.hero.getX() == this.hero.getSpell().getX() && this.hero.getY() == this.hero.getSpell().getY()) {
+				this.hero.getSpell().disappear(hero);
+			}
+		}
 
 	}
 
@@ -41,9 +89,9 @@ public class World {
 				world[ennemy.getX() - 1][ennemy.getY() - 1] = ennemy.getSprite();
 			}
 		}
-		world[exitDoor.getX()-1][exitDoor.getY()-1] = exitDoor.getSprite();
-		world[hero.getX()-1][hero.getY()-1] = hero.getSprite();
-		world[hero.getSpell().getX()][hero.getSpell().getY()] = hero.getSpell().getSprite();
+		world[exitDoor.getX() - 1][exitDoor.getY() - 1] = exitDoor.getSprite();
+		world[hero.getX() - 1][hero.getY() - 1] = hero.getSprite();
+		world[hero.getSpell().getX() - 1][hero.getSpell().getY() - 1] = hero.getSpell().getSprite();
 		return world;
 	}
 
@@ -53,6 +101,7 @@ public class World {
 		case "l":
 			this.hero = new Hero(X, Y);
 			this.mobileList.add(this.hero.getSpell());
+			this.erasableList.add(this.hero.getSpell());
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
@@ -115,12 +164,12 @@ public class World {
 	public boolean isPenetrable(int X, int Y) {
 		int i = 0;
 		int j = 0;
-		while (this.elementList.get(i).getX() != X && this.elementList.get(i).getY() != Y
+		while (this.elementList.get(i).getX() != X || this.elementList.get(i).getY() != Y
 				&& this.elementList.get(i).getClass() == Hero.class && this.elementList.get(i).getClass() == Spell.class
 				&& this.elementList.get(i).getClass() == Ennemy.class) {
 			i++;
 		}
-		while (this.immobileList.get(j) == this.elementList.get(i)) {
+		while (this.immobileList.get(j) != this.elementList.get(i) || this.immobileList.get(j) != null) {
 			j++;
 		}
 
@@ -166,6 +215,19 @@ public class World {
 			break;
 		}
 		this.hero.moveGlobal(null, orientation);
+		int i = 0;
+		int j = 0;
+		while (this.elementList.get(i).getX() != this.hero.getX() || this.elementList.get(i).getY() != this.hero.getY()
+				|| this.elementList.get(i) instanceof IDisappear) {
+			i++;
+		}
+		while (this.erasableList.get(j) != this.elementList.get(i) || this.erasableList.get(j) != null) {
+			j++;
+		}
+		this.erasableList.get(j).disappear();
+		this.erasableList.get(j).disappear(this.exitDoor);
+		;
+		this.erasableList.get(j).disappear(this.hero);
 
 	}
 

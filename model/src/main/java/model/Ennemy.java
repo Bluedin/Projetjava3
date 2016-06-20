@@ -8,7 +8,7 @@ public class Ennemy extends Element implements IDisappear {
 
 	public Ennemy(int X, int Y, String sprite) {
 		super(X, Y, null);
-		switch(sprite){
+		switch (sprite) {
 		case "1":
 			sprite = "/sprite/monster_1.png";
 			break;
@@ -38,6 +38,14 @@ public class Ennemy extends Element implements IDisappear {
 		}
 	}
 
+	public boolean getBehaviour() {
+		return this.nBehaviour;
+	}
+
+	public boolean getLife() {
+		return this.life;
+	}
+
 	public void disappear() {
 		// TODO Auto-generated method stub
 		this.X = -5;
@@ -57,14 +65,17 @@ public class Ennemy extends Element implements IDisappear {
 
 	public void move(Hero hero) {
 		if (hero.getX() - this.getX() > -3 && hero.getX() - this.getX() < 3 && hero.getY() - this.getY() > -3
-				&& hero.getY() - this.getY() < 3 && nBehaviour){
+				&& hero.getY() - this.getY() < 3 && nBehaviour) {
 			changeBehaviour();
-		}else if(!nBehaviour){
+		} else if (!nBehaviour) {
 			changeBehaviour();
 		}
-			if (life) {
-				behaviour.move(this, hero);
-			}
+		if (life) {
+			behaviour.move(this, hero);
+		}
+		if (this.getX() == hero.getX() && this.getY() == hero.getY()) {
+			hero.die();
+		}
 	}
 
 }

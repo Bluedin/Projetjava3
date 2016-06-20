@@ -20,6 +20,10 @@ public class Hero extends Element implements IMobile{
 		return life;
 	}
 	
+	public void die(){
+		life = false;
+	}
+	
 	public int getScore(){
 		return score;
 	}
@@ -41,6 +45,7 @@ public class Hero extends Element implements IMobile{
 	}
 	
 	public void shoot(){
+		this.spell.setOrientation(this.orientation);
 		this.spell.moveGlobal(this.spell, this.orientation);
 		hasSpell = false;
 	}
