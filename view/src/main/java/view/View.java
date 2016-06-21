@@ -8,8 +8,8 @@ import contract.IModel;
 import contract.IView;
 
 /**
- * The Class View.
- *sssssss
+ * The Class View.zz
+ *
  */
 public class View implements IView, Runnable {
 
