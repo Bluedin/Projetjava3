@@ -28,6 +28,10 @@ public class World {
 	public String[][] getWorld() {
 		return generateMapString();
 	}
+	
+	public Hero getHero(){
+		return this.hero;
+	}
 
 	public void animate() {
 

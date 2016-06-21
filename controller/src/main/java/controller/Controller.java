@@ -24,6 +24,8 @@ public class Controller implements IController, Observer {
 	private IModel model;
 
 	private KeyEvent keyEvent;
+	
+	private int level = 1;
 
 	/**
 	 * Instantiates a new controller.
@@ -49,7 +51,7 @@ public class Controller implements IController, Observer {
 	 */
 	public synchronized void control() {
 
-		model.loadWorld(1);
+		model.loadWorld(this.level);
 		while (true) {
 
 			
@@ -63,7 +65,9 @@ public class Controller implements IController, Observer {
 					view.printWorld(model);
 				}
 			});*/
-			
+			if(!this.model.heroIsAlive()){
+				this.model.loadWorld(level);
+			}
 
 			try {
 				Thread.sleep(500);

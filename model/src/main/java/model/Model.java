@@ -96,4 +96,9 @@ public class Model extends Observable implements IModel {
 		this.setChanged();
 		this.notifyObservers();
 	}
+
+	@Override
+	public boolean heroIsAlive() {
+		return this.world.getHero().getLife();
+	}
 }

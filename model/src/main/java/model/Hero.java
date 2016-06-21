@@ -14,6 +14,7 @@ public class Hero extends Element implements IMobile{
 		this.orientation = Orientation.RIGHT;
 		this.spell = new Spell(-5, -5);
 		this.hasSpell = true;
+		this.life = true;
 	}
 	
 	public boolean getLife(){

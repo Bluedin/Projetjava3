@@ -43,6 +43,8 @@ public interface IModel {
 	boolean move_global(ControllerOrder direction);
 
 	void animate();
+	
+	boolean heroIsAlive();
 
 	
 }
