@@ -174,7 +174,7 @@ public class World {
 			return this.exitDoor.getPermeability() == Permeability.PENETRABLE;
 		}
 		for (Element element : this.elementList) {
-			if (element.getX() == X - 1 && element.getY() == Y) {
+			if (element.getX() == X && element.getY() == Y) {
 				if (this.immobileList.get(j).getPermeability() == Permeability.BLOCKING) {
 					return false;
 				}
