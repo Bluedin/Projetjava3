@@ -18,9 +18,11 @@ public abstract class Main {
 	 *          the arguments
 	 */
 	public static void main(final String[] args) {
+		
 		final Model model = new Model();
+		int level = model.levelBySelection();
 		final View view = new View(model);
-		final Controller controller = new Controller(view, model);
+		final Controller controller = new Controller(view, model, level);
 		view.setController(controller);
 		controller.control();
 	}

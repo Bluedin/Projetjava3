@@ -35,9 +35,10 @@ public class Controller implements IController, Observer {
 	 * @param model
 	 *            the model
 	 */
-	public Controller(final IView view, final IModel model) {
+	public Controller(final IView view, final IModel model, int level) {
 		this.setView(view);
 		this.setModel(model);
+		this.level = level;
 	}
 
 	public void setKeyEvent(final KeyEvent e) {

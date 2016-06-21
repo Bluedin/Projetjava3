@@ -3,6 +3,8 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import javax.swing.JOptionPane;
+
 import contract.ControllerOrder;
 import contract.IModel;
 
@@ -19,8 +21,7 @@ public class Model extends Observable implements IModel {
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		
-		
+
 	}
 
 	/*
@@ -37,7 +38,7 @@ public class Model extends Observable implements IModel {
 	 * Sets the message.
 	 *
 	 * @param message
-	 *          the new message
+	 *            the new message
 	 */
 	private void setWorld(final World world) {
 		this.world = world;
@@ -62,6 +63,17 @@ public class Model extends Observable implements IModel {
 	 */
 	public Observable getObservable() {
 		return this;
+	}
+
+	public int levelBySelection() {
+		int level = 0;
+		String[] tabLvl = { "1", "2", "3", "4", "5" };
+		JOptionPane jop = new JOptionPane();
+		while(level == 0){
+			level = JOptionPane.showOptionDialog(null, "Welcome! Which level do you want to try?", "Select your level",
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, tabLvl, tabLvl[0]);
+		}
+		return level;
 	}
 
 	public int positionHeroX() {
