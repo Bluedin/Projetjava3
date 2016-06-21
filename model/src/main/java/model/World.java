@@ -242,6 +242,16 @@ public class World {
 				}
 			}
 		}
+		for(Ennemy ennemy : ennemyList){
+			if(this.hero.getX() == ennemy.getX() && this.hero.getY() == ennemy.getY()){
+				this.hero.die();
+			}
+		}
+		if(this.hero.getHasSpell()){
+			if(this.hero.getSpell().getX() == this.hero.getX() && this.hero.getSpell().getY() == this.hero.getY()){
+				this.hero.getSpell().disappear(hero);
+			}
+		}
 		if (this.hero.getX() == this.exitDoor.getX() && this.hero.getY() == this.exitDoor.getY()
 				&& !this.exitDoor.getState()) {
 			this.hero.die();
