@@ -23,7 +23,6 @@ public class Hero extends Element implements IMobile{
 	
 	public void die(){
 		life = false;
-		System.out.println("Perdu");
 	}
 	
 	public int getScore(){

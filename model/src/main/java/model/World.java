@@ -247,7 +247,7 @@ public class World {
 				this.hero.die();
 			}
 		}
-		if(this.hero.getHasSpell()){
+		if(!this.hero.getHasSpell()){
 			if(this.hero.getSpell().getX() == this.hero.getX() && this.hero.getSpell().getY() == this.hero.getY()){
 				this.hero.getSpell().disappear(hero);
 			}

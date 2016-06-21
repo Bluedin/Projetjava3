@@ -219,7 +219,6 @@ public class Controller implements IController, Observer {
 		this.view.printWorld(model);
 
 		if (win) {
-			System.out.println("You have won");
 			level ++;
 			if(level > 5){
 				this.view.printWin();
@@ -235,7 +234,6 @@ public class Controller implements IController, Observer {
 	 * If model change, re-print
 	 */
 	public void update(Observable o, Object arg) {
-		System.out.println("Le modèle a changé");
 		this.view.printWorld(model);
 	}
 
