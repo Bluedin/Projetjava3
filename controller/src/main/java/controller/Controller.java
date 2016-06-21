@@ -56,7 +56,7 @@ public class Controller implements IController, Observer {
 	 * @see contract.IController#control()
 	 * Loading world
 	 * If there is a key event, associate this key event with a controllerOrder state, 
-	 * then animate (all the elements witch are not the hero)
+	 * then animate (all the elements wiches are not the hero)
 	 * Verify if the hero is dead or not, then if he is, re-load the world
 	 * Add a timer for the refresh every 0.25 secs
 	 */
@@ -126,8 +126,8 @@ public class Controller implements IController, Observer {
 	
 	/* (non-Javadoc)
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
-	 * orderPerform associate a controllerOrder state with a change of position, by incrementing or by decrementing. 
-	 * win is a boolean witch determine if yes or not the move is the winning move. 
+	 * orderPerform associate a controllerOrder state with a changement of a position, incrementation or decrementation. 
+	 * win is a boolean wich  determine if yes or not the move is the winning move. 
 	 * We also have in this method a method called spellTest who look if the spell have already been shoot, if not, it shoot!
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
@@ -219,6 +219,7 @@ public class Controller implements IController, Observer {
 		this.view.printWorld(model);
 
 		if (win) {
+			System.out.println("You have won");
 			level ++;
 			if(level > 5){
 				this.view.printWin();
@@ -234,6 +235,7 @@ public class Controller implements IController, Observer {
 	 * If model change, re-print
 	 */
 	public void update(Observable o, Object arg) {
+		System.out.println("Le modèle a changé");
 		this.view.printWorld(model);
 	}
 
