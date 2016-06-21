@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * enumeration which defines the orientation of n element
+ *
+ */
 public enum Orientation {
 
 	UP,
