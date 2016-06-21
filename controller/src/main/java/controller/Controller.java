@@ -29,6 +29,7 @@ public class Controller implements IController, Observer {
 
 	/**
 	 * Instantiates a new controller.
+	 * Constructor of controller.
 	 *
 	 * @param view
 	 *            the view
@@ -41,6 +42,10 @@ public class Controller implements IController, Observer {
 		this.level = level;
 	}
 
+	/* (non-Javadoc)
+	 * @see contract.IController#setKeyEvent(java.awt.event.KeyEvent)
+	 * 
+	 */
 	public void setKeyEvent(final KeyEvent e) {
 		this.keyEvent = e;
 	}
@@ -49,6 +54,11 @@ public class Controller implements IController, Observer {
 	 * (non-Javadoc)
 	 * 
 	 * @see contract.IController#control()
+	 * Loading world
+	 * If there is a key event, associate this key event with a controllerOrder state, 
+	 * then animate (all the elements wiches are not the hero)
+	 * Verify if the hero is dead or not, then if he is, re-load the world
+	 * Add a timer for the refresh every 0.25 secs
 	 */
 	public synchronized void control() {
 
@@ -86,7 +96,7 @@ public class Controller implements IController, Observer {
 	 * Sets the view.
 	 *
 	 * @param view
-	 *            the new view
+	 * The new view
 	 */
 	private void setView(final IView view) {
 		this.view = view;
@@ -96,24 +106,29 @@ public class Controller implements IController, Observer {
 	 * Sets the model.
 	 *
 	 * @param model
-	 *            the new model
+	 * The new model
 	 */
 	private void setModel(final IModel model) {
 		this.model = model;
 		model.getObservable().addObserver(this);
 	}
 
-	private void spellTest() { // test si sort ou pas
+	/**
+	 * Look with the help of the model method spellOrNot if the spell is available or not. 
+	 */
+	private void spellTest() { 
 		if (model.spellOrNot()) {
 			model.shoot();
 		}
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
+	
+	/* (non-Javadoc)
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
+	 * orderPerform associate a controllerOrder state with a changement of a position, incrementation or decrementation. 
+	 * win is a boolean wich determine if yes or not the move is the winning move. 
+	 * We also have in this method a method called spellTest who look if the spell have already been shoot, if not, it shoot!
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		int posHeroX;
@@ -214,6 +229,11 @@ public class Controller implements IController, Observer {
 		}
 	}
 
+	/**
+	 * @param o
+	 * @param arg
+	 * If model change, re-print
+	 */
 	public void update(Observable o, Object arg) {
 		System.out.println("Le modèle a changé");
 		this.view.printWorld(model);
