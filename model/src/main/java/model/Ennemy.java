@@ -70,12 +70,12 @@ public class Ennemy extends Element implements IDisappear {
 	}
 
 	public void move(Hero hero, World world) {
-		/*if (hero.getX() - this.getX() > -3 && hero.getX() - this.getX() < 3 && hero.getY() - this.getY() > -3
-				&& hero.getY() - this.getY() < 3 && nBehaviour) {
+		if (hero.getX() - this.getX() > -4 && hero.getX() - this.getX() < 4 && hero.getY() - this.getY() > -4
+				&& hero.getY() - this.getY() < 4 && nBehaviour) {
 			changeBehaviour();
 		} else if (!nBehaviour) {
 			changeBehaviour();
-		}*/
+		}
 		if (life) {
 			behaviour.move(this, hero, world);
 		}

@@ -114,7 +114,7 @@ public class Controller implements IController, Observer {
 		int posHeroX;
 		int posHeroY;
 		boolean win = false;
-
+		
 		posHeroX = model.positionHeroX();
 		posHeroY = model.positionHeroY();
 		if (controllerOrder != null) {
