@@ -32,13 +32,14 @@ class ViewFrame extends JFrame implements KeyListener {
 	private static final long	serialVersionUID	= -697358409737458175L;
 
 	/**
-	 * Instantiates a new view frame.
+	 * Instantiates a new view frame. this is he constructor
 	 *
 	 * @param model
 	 *          the model
 	 * @throws HeadlessException
 	 *           the headless exception
 	 */
+	
 	public ViewFrame(final IModel model) throws HeadlessException {
 		this.buildViewFrame(model);
 	}
@@ -51,6 +52,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @param gc
 	 *          the gc
 	 */
+	
 	public ViewFrame(final IModel model, final GraphicsConfiguration gc) {
 		super(gc);
 		this.buildViewFrame(model);
@@ -91,6 +93,7 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *
 	 * @return the controller
 	 */
+	
 	private IController getController() {
 		return this.controller;
 	}
@@ -126,6 +129,7 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/**
 	 * Builds the view frame.
+	 * with all caracteristiques
 	 *
 	 * @param model
 	 *          the model
@@ -142,13 +146,16 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setBackground(Color.BLACK);
 	}
 	
+	/**
+	 * this method print the win message
+	 */
 	public void printWin(){
 		JOptionPane.showMessageDialog(null, "You have won");
 	}
 
 	/**
 	 * Prints the message.
-	 *
+	 * this method get elements to build the frame 
 	 * @param message
 	 *          the message
 	 */
@@ -157,18 +164,18 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.viewPanel.getViewBuilder().get_elements(model.getWorld());
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	/**
+	 *this is the method who get information of KeyEvent and make action when the key is just 
+	 *typed 
+	 *	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
 	 */
 	public void keyTyped(final KeyEvent e) {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
+	/**
+	 *this is the method who get information of KeyEvent and make action when the key is 
+	 * pressed whe used this for our move
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
 	public void keyPressed(final KeyEvent e) {
@@ -177,9 +184,9 @@ class ViewFrame extends JFrame implements KeyListener {
 		//this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
+	/**
+	 *this is the method who get information of KeyEvent and make action when the key is
+	 * released and make the action
 	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
 	 */
 	public void keyReleased(final KeyEvent e) {

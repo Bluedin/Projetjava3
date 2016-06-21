@@ -24,8 +24,8 @@ class ViewPanel extends JPanel implements Observer {
 	private static final long	serialVersionUID	= -998294702363713521L;
 
 	/**
-	 * Instantiates a new view panel.
-	 *
+	 * Instantiates a new view panel. this is the constructor
+	 *we get the observer and obserable here with the model
 	 * @param viewFrame
 	 *          the view frame
 	 */
@@ -35,13 +35,17 @@ class ViewPanel extends JPanel implements Observer {
 		this.viewBuilder = new ViewBuilder(this);
 	}
 	
+	/**
+	 * this method is for get the viewBuilder
+	 * @return
+	 */
 	public ViewBuilder getViewBuilder(){
 		return this.viewBuilder;
 	}
 
 	/**
 	 * Gets the view frame.
-	 *
+	 * 
 	 * @return the view frame
 	 */
 	private ViewFrame getViewFrame() {
@@ -58,17 +62,16 @@ class ViewPanel extends JPanel implements Observer {
 		this.viewFrame = viewFrame;
 	} 
 
-	/*
-	 * (non-Javadoc)
-	 *
+	/**
+	 * this method is for update when the model change
 	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
 	 */
 	public void update(final Observable arg0, final Object arg1) {
 		this.repaint();
 	}
 
-	/*
-	 * (non-Javadoc)
+	/**
+	 * this method create all the picture and paint the frame
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
 	@Override

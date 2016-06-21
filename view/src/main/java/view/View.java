@@ -8,7 +8,7 @@ import contract.IModel;
 import contract.IView;
 
 /**
- * The Class View.zz
+ * The Class View.
  *
  */
 public class View implements IView, Runnable {
@@ -22,6 +22,10 @@ public class View implements IView, Runnable {
 	 * @param model
 	 *          the model
 	 */
+	/**
+	 * @param model 
+	 * c est le constructeur de la view
+	 */
 	public View(final IModel model) {
 		this.viewFrame = new ViewFrame(model);
 		SwingUtilities.invokeLater(this);
@@ -33,6 +37,10 @@ public class View implements IView, Runnable {
 	 * @param keyCode
 	 *          the key code
 	 * @return the controller order
+	 */
+	/* (non-Javadoc)
+	 * @see contract.IView#keyCodeToControllerOrder(int)
+	 * recupere les touches entree par l'utilisateur et les convertis en controllerOrder
 	 */
 	public ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
@@ -59,10 +67,10 @@ public class View implements IView, Runnable {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IView#printMessage(java.lang.String)
+	
+	/**
+	 * @see contract.IView#printWorld(contract.IModel)
+	 * this method call the same method in viewFrame to show the world
 	 */
 	public void printWorld(final IModel model) {
 		// On force l'executon dans le tread de l'IHM
@@ -83,6 +91,10 @@ public class View implements IView, Runnable {
 	 *
 	 * @see java.lang.Runnable#run()
 	 */
+	/**
+	 * @see java.lang.Runnable#run()
+	 * this method is normally used when the model change because view is the observable of the model
+	 */
 	public void run() {
 		this.viewFrame.setVisible(true);
 	}
@@ -93,10 +105,18 @@ public class View implements IView, Runnable {
 	 * @param controller
 	 *          the new controller
 	 */
+	/**
+	 * @param controller 
+	 * this method agreagation the controller
+	 */
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
 
+	/**
+	 * this method is used when we win
+	 * @see contract.IView#printWin()
+	 */
 	public void printWin() {
 		this.viewFrame.printWin();
 		

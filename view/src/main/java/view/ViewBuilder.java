@@ -15,15 +15,29 @@ public class ViewBuilder {
 	
 	private HashMap<String, Image> map = new HashMap<String, Image>();
 
+	/**
+	 * @param v
+	 * this method is the constructor of viewBuilder
+	 */
 	public ViewBuilder(ViewPanel v) {
 		this.viewpanel = v;
 	}
 
+	/**
+	 * @param world
+	 * this method repaint the world when he get element
+	 */
 	public void get_elements(String[][] world) {
 		this.world = world;
 		this.viewpanel.repaint();
 	}
 
+	/**
+	 * @param graphics
+	 * @throws IOException
+	 * this method look all position in the for boucle , when he get a element he change and show 
+	 * the sprite of the element cooresponding to the letter he get and stock it in the map 
+	 */
 	public void createImage(Graphics graphics) throws IOException {
 		for (int y = 0; y < 12; y++) {
 			for (int x = 0; x < 20; x++) {
