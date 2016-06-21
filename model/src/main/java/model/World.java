@@ -49,11 +49,12 @@ public class World {
 							condition = false;
 						}
 					}
-					if (isBlocking) {
-						ennemy.setX(x);
-						ennemy.setY(y);
-						ennemy.move(hero);
-					}
+					
+				}
+				if (isBlocking) {
+					ennemy.reset(x, y);
+					ennemy.move(hero);
+					isBlocking = false;
 				}
 
 			}
@@ -74,6 +75,7 @@ public class World {
 			for (Ennemy ennemy : ennemyList) {
 				if (ennemy.getX() == this.hero.getSpell().getX() && ennemy.getY() == this.hero.getSpell().getY()) {
 					ennemy.disappear();
+					this.hero.getSpell().disappear(this.hero);
 				}
 			}
 			if (this.hero.getX() == this.hero.getSpell().getX() && this.hero.getY() == this.hero.getSpell().getY()) {
@@ -198,7 +200,7 @@ public class World {
 		this.hero.shoot();
 	}
 
-	public void move_global(ControllerOrder direction) {
+	public boolean move_global(ControllerOrder direction) {
 		Orientation orientation = null;
 		switch (direction) {
 		case UP:
@@ -235,14 +237,21 @@ public class World {
 			if (element instanceof IDisappear && i == 0) {
 				j++;
 				if (element.getX() == this.hero.getX() && element.getY() == this.hero.getY()) {
+					this.erasableList.get(j - 1).disappear();
+					this.erasableList.get(j - 1).disappear(this.exitDoor);
+					this.erasableList.get(j - 1).disappear(this.hero);
 					i++;
 				}
 			}
 		}
-		this.erasableList.get(j-1).disappear();
-		this.erasableList.get(j-1).disappear(this.exitDoor);
-		this.erasableList.get(j-1).disappear(this.hero);
-
+		if (this.hero.getX() == this.exitDoor.getX() && this.hero.getY() == this.exitDoor.getY()
+				&& !this.exitDoor.getState()) {
+			this.hero.die();
+		}else if(this.hero.getX() == this.exitDoor.getX() && this.hero.getY() == this.exitDoor.getY()
+				&& this.exitDoor.getState()) {
+			return true;
+		}
+		return false;
 	}
 
 }

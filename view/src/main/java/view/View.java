@@ -66,6 +66,7 @@ public class View implements IView, Runnable {
 	 */
 	public void printWorld(IModel model) {
 		viewFrame.printWorld(model);
+		this.viewFrame.setVisible(true);
 	}
 
 	/*

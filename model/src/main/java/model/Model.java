@@ -85,10 +85,11 @@ public class Model extends Observable implements IModel {
 		this.world.shoot();
 	}
 
-	public void move_global(ControllerOrder direction) {
-		this.world.move_global(direction);
+	public boolean move_global(ControllerOrder direction) {
+		boolean win = this.world.move_global(direction);
 		this.setChanged();
 		this.notifyObservers();
+		return win;
 	}
 
 	public void animate() {

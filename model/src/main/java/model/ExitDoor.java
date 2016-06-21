@@ -2,6 +2,11 @@ package model;
 
 public class ExitDoor extends Element{
 	
+	
+	/**state indicates the ExitDoor state:
+	 * true = open
+	 * false = closed
+	 */
 	private boolean state;
 	private Permeability permeability = Permeability.PENETRABLE;
 

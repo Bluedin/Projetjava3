@@ -63,6 +63,11 @@ public class Ennemy extends Element implements IDisappear {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void reset(int x, int y){
+		this.setX(x);
+		this.setY(y);
+	}
 
 	public void move(Hero hero) {
 		if (hero.getX() - this.getX() > -3 && hero.getX() - this.getX() < 3 && hero.getY() - this.getY() > -3
