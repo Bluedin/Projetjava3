@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * Enraged class
+ * Implements IBehaviour and IMobile
+ * Part of the DP Strategy for ennemy
+ * Make the ennemy chase after the hero
+ */
 public class Enraged implements IBehaviour, IMobile {
 
 	public void move(Ennemy ennemy, Hero hero, World world) {
@@ -23,25 +29,25 @@ public class Enraged implements IBehaviour, IMobile {
 		if(orientation1 != null){
 			if(orientation1 == Orientation.RIGHT){
 				if(orientation2 != null){
-					orientation = Orientation.RIGHT;
-					orientationOrdinal = 2;
+					orientation = Orientation.RIGHT_DOWN;
+					orientationOrdinal = 3;
 				}else if(orientation2 == Orientation.UP){
 					orientation = Orientation.UP_RIGHT;
 					orientationOrdinal = 1;
 				}else{
-					orientation = Orientation.RIGHT_DOWN;
-					orientationOrdinal = 3;
+					orientation = Orientation.RIGHT;
+					orientationOrdinal = 2;
 				}
 			}else{
 				if(orientation2 != null){
-					orientation = Orientation.LEFT;
-					orientationOrdinal = 6;
+					orientation = Orientation.LEFT_DOWN;
+					orientationOrdinal = 5;
 				}else if(orientation2 == Orientation.UP){
 					orientation = Orientation.UP_LEFT;
 					orientationOrdinal = 7;
 				}else{
-					orientation = Orientation.LEFT_DOWN;
-					orientationOrdinal = 5;
+					orientation = Orientation.LEFT;
+					orientationOrdinal = 6;
 				}
 			}
 		}else{

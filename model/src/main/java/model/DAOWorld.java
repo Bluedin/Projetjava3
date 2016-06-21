@@ -6,16 +6,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * The Class DAOHelloWorld.
+ * The Class DAOWorld.
  *
- * @author Jean-Aymeric Diet
+ * 
  */
 class DAOWorld {
 
 	private final Connection connection;
 
 	/**
-	 * Instantiates a new DAO hello world.
+	 * Instantiates a new DAO world.
 	 *
 	 * @param connection
 	 *            the connection
@@ -26,13 +26,20 @@ class DAOWorld {
 		this.connection = connection;
 	}
 
+	
+	
+	/**
+	 * @return connection
+	 */
 	protected Connection getConnection() {
 		return this.connection;
 	}
 
-	/*
+	/**
 	 * Use the stored procedure to get the map of the level
 	 * And create the level corresponding
+	 * @param id
+	 * @return
 	 */
 	public World find(final int id) {
 
