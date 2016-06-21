@@ -1,5 +1,11 @@
 package controller;
 
+import java.awt.event.KeyEvent;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.SwingUtilities;
+
 import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
@@ -9,13 +15,15 @@ import contract.IView;
 /**
  * The Class Controller.
  */
-public class Controller implements IController {
+public class Controller implements IController, Observer {
 
 	/** The view. */
 	private IView view;
 
 	/** The model. */
 	private IModel model;
+
+	private KeyEvent keyEvent;
 
 	/**
 	 * Instantiates a new controller.
@@ -30,6 +38,10 @@ public class Controller implements IController {
 		this.setModel(model);
 	}
 
+	public void setKeyEvent(final KeyEvent e) {
+		this.keyEvent = e;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -40,15 +52,26 @@ public class Controller implements IController {
 		model.loadWorld(1);
 		while (true) {
 
+			
+			//System.out.println(this.keyEvent);
+			if (this.keyEvent != null) {
+				this.orderPerform(this.view.keyCodeToControllerOrder(keyEvent.getKeyCode()));
+			}
 			model.animate();
-			view.printWorld(model);
+			/*SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					view.printWorld(model);
+				}
+			});*/
+			
 
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(500);
 			}
 
 			catch (InterruptedException ex) {
 				Thread.currentThread().interrupt();
+				return ;
 			}
 
 		}
@@ -72,6 +95,7 @@ public class Controller implements IController {
 	 */
 	private void setModel(final IModel model) {
 		this.model = model;
+		model.getObservable().addObserver(this);
 	}
 
 	private void spellTest() { // test si sort ou pas
@@ -177,6 +201,11 @@ public class Controller implements IController {
 		if (win) {
 			System.out.println("You have won");
 		}
+	}
+
+	public void update(Observable o, Object arg) {
+		System.out.println("Le modèle a changé");
+		this.view.printWorld(model);
 	}
 
 }

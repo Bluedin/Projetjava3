@@ -3,7 +3,7 @@ package model;
 public class Enraged implements IBehaviour, IMobile{
 
 
-	public void move(Ennemy ennemy, Hero hero) {
+	public void move(Ennemy ennemy, Hero hero, World world) {
 		
 	}
 
@@ -56,6 +56,12 @@ public class Enraged implements IBehaviour, IMobile{
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public boolean moveTest(Ennemy ennemy, Hero hero, World world, int randomNumber) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

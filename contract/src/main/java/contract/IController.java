@@ -1,5 +1,7 @@
 package contract;
 
+import java.awt.event.KeyEvent;
+
 /**
  * The Interface IController.
  *
@@ -19,4 +21,6 @@ public interface IController {
 	 *          the controller order
 	 */
 	public void orderPerform(ControllerOrder controllerOrder);
+	public void setKeyEvent(final KeyEvent e);
+	
 }

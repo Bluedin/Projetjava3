@@ -31,36 +31,10 @@ public class World {
 
 	public void animate() {
 
-		int x = 0;
-		int y = 0;
-		boolean condition = true;
-		boolean isBlocking = false;
 		for (Ennemy ennemy : ennemyList) {
-			x = ennemy.getX();
-			y = ennemy.getY();
-			ennemy.move(hero);
-			while (condition) {
-				for (Element element : elementList) {
-					if (element.getX() == ennemy.getX() + 1 && element.getY() == ennemy.getY() - 1
-							&& element instanceof IPermeable) {
-						if (element instanceof EnergyBubble || element instanceof Wall || element instanceof Gold) {
-							isBlocking = true;
-						} else if (element instanceof Background && !isBlocking) {
-							condition = false;
-						}
-					}
-					
-				}
-				if (isBlocking) {
-					ennemy.reset(x, y);
-					ennemy.move(hero);
-					isBlocking = false;
-					condition = true;
-				}
 
-			}
-			condition = true;
-			isBlocking = false;
+			ennemy.move(hero, this);
+
 		}
 
 		if (!this.spellOrNot()) {
@@ -84,6 +58,26 @@ public class World {
 			}
 		}
 
+	}
+
+	public ArrayList<Element> getElementList() {
+		return elementList;
+	}
+
+	public ArrayList<IPermeable> getImmobileList() {
+		return immobileList;
+	}
+
+	public ArrayList<IMobile> getMobileList() {
+		return mobileList;
+	}
+
+	public ArrayList<IDisappear> getErasableList() {
+		return erasableList;
+	}
+
+	public ArrayList<Ennemy> getEnnemyList() {
+		return ennemyList;
 	}
 
 	public String[][] generateMapString() {
@@ -174,22 +168,21 @@ public class World {
 	}
 
 	public boolean isPenetrable(int X, int Y) {
-		int i = 0;
 		int j = 0;
+		// test si on est sur la porte
 		if (this.exitDoor.getX() == X && this.exitDoor.getY() == Y) {
 			return this.exitDoor.getPermeability() == Permeability.PENETRABLE;
-		} else {
-			for (Element element : this.elementList) {
-				if (element.getX() == X - 1 && element.getY() == Y && i == 0) {
-					i++;
-					j++;
-				} else if (i == 0) {
-					j++;
+		}
+		for (Element element : this.elementList) {
+			if (element.getX() == X - 1 && element.getY() == Y) {
+				if (this.immobileList.get(j).getPermeability() == Permeability.BLOCKING) {
+					return false;
 				}
 			}
-
-			return this.immobileList.get(j).getPermeability() == Permeability.PENETRABLE;
+			j++;
 		}
+
+		return true;
 
 	}
 
@@ -248,7 +241,7 @@ public class World {
 		if (this.hero.getX() == this.exitDoor.getX() && this.hero.getY() == this.exitDoor.getY()
 				&& !this.exitDoor.getState()) {
 			this.hero.die();
-		}else if(this.hero.getX() == this.exitDoor.getX() && this.hero.getY() == this.exitDoor.getY()
+		} else if (this.hero.getX() == this.exitDoor.getX() && this.hero.getY() == this.exitDoor.getY()
 				&& this.exitDoor.getState()) {
 			return true;
 		}

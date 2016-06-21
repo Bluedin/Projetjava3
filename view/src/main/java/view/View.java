@@ -34,7 +34,7 @@ public class View implements IView, Runnable {
 	 *          the key code
 	 * @return the controller order
 	 */
-	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
+	public ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
 			case KeyEvent.VK_NUMPAD8:
 				return ControllerOrder.UP;
@@ -64,9 +64,18 @@ public class View implements IView, Runnable {
 	 *
 	 * @see contract.IView#printMessage(java.lang.String)
 	 */
-	public void printWorld(IModel model) {
+	public void printWorld(final IModel model) {
+		// On force l'executon dans le tread de l'IHM
+		if (!SwingUtilities.isEventDispatchThread()) {
+			SwingUtilities.invokeLater(new Runnable() {
+				public void run() {
+					printWorld(model);
+				}
+			});
+			return;
+		}
 		viewFrame.printWorld(model);
-		this.viewFrame.setVisible(true);
+		if (!viewFrame.isValid()) this.viewFrame.setVisible(true);
 	}
 
 	/*

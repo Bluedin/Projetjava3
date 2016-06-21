@@ -2,8 +2,11 @@ package model;
 
 public class Normal implements IBehaviour, IMobile {
 
-	public void move(Ennemy ennemy, Hero hero) {
+	public void move(Ennemy ennemy, Hero hero, World world) {
 		int randomNumber = (int) (Math.random() * 8);
+		while(moveTest(ennemy, hero, world, randomNumber)){
+			randomNumber = (int) (Math.random() * 8);
+		}
 		switch (randomNumber) {
 		case 0:
 			moveGlobal(ennemy, Orientation.UP);
@@ -51,7 +54,7 @@ public class Normal implements IBehaviour, IMobile {
 	}
 
 	public void moveGlobal(Element element, Orientation orientation) {
-		switch(orientation){
+		switch (orientation) {
 		case DOWN:
 			moveDown(element);
 			break;
@@ -83,6 +86,55 @@ public class Normal implements IBehaviour, IMobile {
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public boolean moveTest(Ennemy ennemy, Hero hero, World world, int randomNumber) {
+		int xTest = ennemy.getX();
+		;
+		int yTest = ennemy.getY();
+		switch (randomNumber) {
+		case 0:
+			yTest--;
+			break;
+		case 1:
+			yTest--;
+			xTest++;
+			break;
+		case 2:
+			xTest++;
+			break;
+		case 3:
+			xTest++;
+			yTest++;
+			break;
+		case 4:
+			yTest++;
+			break;
+		case 5:
+			xTest--;
+			yTest++;
+			break;
+		case 6:
+			xTest--;
+			break;
+		case 7:
+			xTest--;
+			yTest--;
+			break;
+		default:
+			break;
+		}
+		for (Element element : world.getElementList()) {
+			if (xTest == element.getX() && yTest == element.getY() && !(element instanceof Background)
+					&& element instanceof IPermeable) {
+				return true;
+			}
+		}
+		if(xTest == hero.getX() && yTest == hero.getY()){
+			hero.die();
+		}
+		return false;
 	}
 
 }

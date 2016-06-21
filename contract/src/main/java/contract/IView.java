@@ -14,4 +14,5 @@ public interface IView {
 	 *          the message
 	 */
 	public void printWorld(IModel model);
+	public ControllerOrder keyCodeToControllerOrder(final int keyCode);
 }
