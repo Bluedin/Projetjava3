@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * contains the methods which allow an object to move by manipulating its coordinate
+ *
+ */
 public interface IMobile {
 
 	void moveDown(Element element);

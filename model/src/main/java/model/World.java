@@ -4,35 +4,91 @@ import java.util.ArrayList;
 
 import contract.ControllerOrder;
 
+/**
+ * World class
+ * which contains the different object 
+ * which compose our model
+ *
+ */
 public class World {
 
+	/**
+	 * ArrayList<Element> elementList
+	 * contains all elements which doesn't move
+	 * such as background, gold, energyBubble and wall
+	 * could possibly contains all elements
+	 * allows the use of getter to find the position and the sprite of the objects
+	 */
 	private ArrayList<Element> elementList;
+	/**
+	 * ArrayList<IPermeable> immobileList
+	 * contains all elements which doesn't move
+	 * such as background, gold, energyBubble and wall
+	 * allows the use of Getter to find the Permeability of the objects
+	 */
 	private ArrayList<IPermeable> immobileList;
-	private ArrayList<IMobile> mobileList;
+	/**
+	 * ArrayList<IDisappear> erasableList
+	 * contains all elements which can be erased
+	 * such as gold, energyBubble, spell and ennemy
+	 * allows the use of the method disappear
+	 */
 	private ArrayList<IDisappear> erasableList;
+	/**
+	 * ArrayList<Ennemy> ennemyList
+	 * contains the list of ennemy
+	 */
 	private ArrayList<Ennemy> ennemyList;
+	/**
+	 * ExitDoor exitDoor
+	 */
 	private ExitDoor exitDoor;
+	/**
+	 * Hero hero
+	 */
 	private Hero hero;
+	/**
+	 * nbrEnnemy = 1
+	 * allows to define different sprite for each ennemy
+	 */
 	private int nbrEnnemy = 1;
 
+	/**
+	 * constructor
+	 * initialize the different list
+	 */
 	public World() {
 
 		elementList = new ArrayList<Element>();
 		immobileList = new ArrayList<IPermeable>();
-		mobileList = new ArrayList<IMobile>();
 		erasableList = new ArrayList<IDisappear>();
 		ennemyList = new ArrayList<Ennemy>();
 
 	}
 
+	/**
+	 * return the table of string 
+	 * formed by the different elements of world 
+	 * at their respective position
+	 * @return String[][]
+	 */
 	public String[][] getWorld() {
 		return generateMapString();
 	}
 	
+	/**
+	 * getter
+	 * @return Hero
+	 */
 	public Hero getHero(){
 		return this.hero;
 	}
 
+	/**
+	 * make the different ennemy move automatically
+	 * Different tests relative to spell
+	 * make the spell move if not with the hero
+	 */
 	public void animate() {
 
 		for (Ennemy ennemy : ennemyList) {
@@ -64,26 +120,38 @@ public class World {
 
 	}
 
+	/**
+	 * @return ArrayList<Element>
+	 */
 	public ArrayList<Element> getElementList() {
 		return elementList;
 	}
 
+	/**
+	 * @return ArrayList<IPermeable>
+	 */
 	public ArrayList<IPermeable> getImmobileList() {
 		return immobileList;
 	}
 
-	public ArrayList<IMobile> getMobileList() {
-		return mobileList;
-	}
-
+	/**
+	 * @return ArrayList<IDisappear>
+	 */
 	public ArrayList<IDisappear> getErasableList() {
 		return erasableList;
 	}
 
+	/**
+	 * @return ArrayList<Ennemy>
+	 */
 	public ArrayList<Ennemy> getEnnemyList() {
 		return ennemyList;
 	}
 
+	/**
+	 * generate the table of string relative at this world
+	 * @return String[][]
+	 */
 	public String[][] generateMapString() {
 		String world[][] = new String[20][12];
 		for (Element element : this.elementList) {
@@ -106,12 +174,20 @@ public class World {
 		return world;
 	}
 
+	/**
+	 * create the respective elements from the key
+	 * in the right lists (or stocked in the right attribute)
+	 * a background at the same position if erasable
+	 * @param key
+	 * @param X
+	 * @param Y
+	 */
 	public void addElement(String key, int X, int Y) {
 		Background background = new Background(X, Y);
 		switch (key) {
 		case "l":
 			this.hero = new Hero(X, Y);
-			this.mobileList.add(this.hero.getSpell());
+			//this.mobileList.add(this.hero.getSpell());
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
@@ -163,14 +239,28 @@ public class World {
 
 	}
 
+	/**
+	 * getter position Hero X
+	 * @return int
+	 */
 	public int positionHeroX() {
 		return this.hero.getX();
 	}
 
+	/**
+	 * getter position Hero Y
+	 * @return int
+	 */
 	public int positionHeroY() {
 		return this.hero.getY();
 	}
 
+	/**
+	 * test if the element at the given position is PENETRABLE
+	 * @param X
+	 * @param Y
+	 * @return
+	 */
 	public boolean isPenetrable(int X, int Y) {
 		int j = 0;
 		// test si on est sur la porte
@@ -190,14 +280,29 @@ public class World {
 
 	}
 
+	/**
+	 * test if the hero has his spell
+	 * @return boolean
+	 */
 	public boolean spellOrNot() {
 		return this.hero.getHasSpell();
 	}
 
+	/**
+	 * the hero shoot his spell
+	 */
 	public void shoot() {
 		this.hero.shoot();
 	}
 
+	/**
+	 * make the hero move
+	 * test if interaction with other objects
+	 * if the hero is at the same position that the door
+	 * and the door is open the method return true
+	 * @param direction
+	 * @return boolean
+	 */
 	public boolean move_global(ControllerOrder direction) {
 		Orientation orientation = null;
 		switch (direction) {

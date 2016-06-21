@@ -1,19 +1,47 @@
 package model;
 
+/**
+ * spell class 
+ * extends Element
+ * implements IDisappear and IMobile
+ *
+ */
 public class Spell extends Element implements IDisappear, IMobile{
 	
+	/**
+	 * indicates the color(sprite) which is used
+	 * used in the movement to make the spell change color
+	 */
 	private int state;
+	/**
+	 * orientation of the spell
+	 * defines the course of its movement
+	 */
 	private Orientation orientation;
 	
+	/**
+	 * constructor
+	 * @param X
+	 * @param Y
+	 */
 	public Spell(int X, int Y) {
 		super(X, Y, "sprite/fireball_1.png");
 		state = 0;
 	}
 	
+	/**
+	 * getter
+	 * @return Orientation orientation
+	 */
 	public Orientation getOrientation(){
 		return this.orientation;
 	}
 	
+	/**
+	 * set the orientation of the spell
+	 * using this method inverse the orientation given in parameters
+	 * @param orientation
+	 */
 	public void setOrientation(Orientation orientation){
 		switch(orientation){
 		case UP:
@@ -44,22 +72,41 @@ public class Spell extends Element implements IDisappear, IMobile{
 		}
 	}
 
+	/**
+	 * @see model.IMobile#moveDown(model.Element)
+	 */
 	public void moveDown(Element element) {
 		element.Y ++;
 	}
 
+	/**
+	 * @see model.IMobile#moveLeft(model.Element)
+	 */
 	public void moveLeft(Element element) {
 		element.X --;
 	}
 
+	/**
+	 * @see model.IMobile#moveUp(model.Element)
+	 */
 	public void moveUp(Element element) {
 		element.Y --;
 	}
 
+	/**
+	 * @see model.IMobile#moveRight(model.Element)
+	 */
 	public void moveRight(Element element) {
 		element.X ++;
 	}
 
+	/**
+	 * move the spell from the orientation
+	 * then change the sprite to change the color
+	 * each time this method is called the sprite change
+	 * by the fifth the sprite comes back to the first
+	 * @see model.IMobile#moveGlobal(model.Element, model.Orientation)
+	 */
 	public void moveGlobal(Element element, Orientation orientation) {
 		switch(this.orientation){
 		case DOWN:
@@ -117,19 +164,29 @@ public class Spell extends Element implements IDisappear, IMobile{
 		}
 	}
 
+	/**
+	 * empty)
+	 * @see model.IDisappear#disappear()
+	 */
 	public void disappear() {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * make the spell return to hero
+	 * @see model.IDisappear#disappear(model.Hero)
+	 */
 	public void disappear(Hero hero) {
 		this.setX(-5);
 		this.setY(-5);
 		hero.gainSpell();
 	}
 
+	/**
+	 * empty
+	 * @see model.IDisappear#disappear(model.ExitDoor)
+	 */
 	public void disappear(ExitDoor exitDoor) {
-		// TODO Auto-generated method stub
 		
 	}
 	

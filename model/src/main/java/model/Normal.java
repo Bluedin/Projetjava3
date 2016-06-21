@@ -1,7 +1,17 @@
 package model;
 
+/**
+ * the class normal 
+ * which defines the behaviour of the ennemy when it is not enraged
+ * is different from enraged only in move(ennemy, hero, world
+ */
 public class Normal implements IBehaviour, IMobile {
 
+	/**
+	 * make the ennemy randomly move after testing if its possible
+	 * test as long as the move is not possible
+	 * @see model.IBehaviour#move(model.Ennemy, model.Hero, model.World)
+	 */
 	public void move(Ennemy ennemy, Hero hero, World world) {
 		int randomNumber = (int) (Math.random() * 8);
 		while(moveTest(ennemy, hero, world, randomNumber)){
