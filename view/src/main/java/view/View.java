@@ -9,7 +9,7 @@ import contract.IView;
 
 /**
  * The Class View.
- *
+ *sssssss
  */
 public class View implements IView, Runnable {
 
