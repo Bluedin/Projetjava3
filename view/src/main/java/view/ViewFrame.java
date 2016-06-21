@@ -141,6 +141,10 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setLocationRelativeTo(null);
 		this.setBackground(Color.BLACK);
 	}
+	
+	public void printWin(){
+		JOptionPane.showMessageDialog(null, "You have won");
+	}
 
 	/**
 	 * Prints the message.

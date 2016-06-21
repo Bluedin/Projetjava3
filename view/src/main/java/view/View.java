@@ -96,4 +96,9 @@ public class View implements IView, Runnable {
 	public void setController(final IController controller) {
 		this.viewFrame.setController(controller);
 	}
+
+	public void printWin() {
+		this.viewFrame.printWin();
+		
+	}
 }

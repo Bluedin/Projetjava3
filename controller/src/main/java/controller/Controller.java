@@ -71,7 +71,7 @@ public class Controller implements IController, Observer {
 			}
 
 			try {
-				Thread.sleep(500);
+				Thread.sleep(250);
 			}
 
 			catch (InterruptedException ex) {
@@ -205,6 +205,12 @@ public class Controller implements IController, Observer {
 
 		if (win) {
 			System.out.println("You have won");
+			level ++;
+			if(level > 5){
+				this.view.printWin();
+			}else{
+				this.model.loadWorld(level);
+			}
 		}
 	}
 

@@ -71,7 +71,7 @@ public class Model extends Observable implements IModel {
 		JOptionPane jop = new JOptionPane();
 		while(level == 0){
 			level = JOptionPane.showOptionDialog(null, "Welcome! Which level do you want to try?", "Select your level",
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, tabLvl, tabLvl[0]);
+					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, tabLvl, tabLvl[0])+1;
 		}
 		return level;
 	}
