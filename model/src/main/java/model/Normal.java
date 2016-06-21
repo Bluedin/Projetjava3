@@ -98,7 +98,6 @@ public class Normal implements IBehaviour, IMobile {
 		}
 	}
 
-	@Override
 	public boolean moveTest(Ennemy ennemy, Hero hero, World world, int randomNumber) {
 		int xTest = ennemy.getX();
 		;

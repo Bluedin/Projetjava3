@@ -1,5 +1,16 @@
 package model;
 
+import model.Element;
+import model.Enraged;
+import model.ExitDoor;
+import model.Hero;
+import model.IBehaviour;
+import model.IDisappear;
+import model.IPermeable;
+import model.Normal;
+import model.Permeability;
+import model.World;
+
 import java.util.ArrayList;
 
 import contract.ControllerOrder;
@@ -182,22 +193,22 @@ public class World {
 	 * @param X
 	 * @param Y
 	 */
-	public void addElement(String key, int X, int Y) {
+	public void addElement(char key, int X, int Y) {
 		Background background = new Background(X, Y);
 		switch (key) {
-		case "l":
+		case 'l':
 			this.hero = new Hero(X, Y);
 			//this.mobileList.add(this.hero.getSpell());
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
-		case "e":
+		case 'e':
 			this.ennemyList.add(new Ennemy(X, Y, "" + this.nbrEnnemy));
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			this.nbrEnnemy++;
 			break;
-		case "g":
+		case 'g':
 			Gold gold = new Gold(X, Y);
 			this.erasableList.add(gold);
 			this.immobileList.add(gold);
@@ -205,7 +216,7 @@ public class World {
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
-		case "b":
+		case 'b':
 			EnergyBubble energyBubble = new EnergyBubble(X, Y);
 			this.erasableList.add(energyBubble);
 			this.immobileList.add(energyBubble);
@@ -213,25 +224,25 @@ public class World {
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;
-		case "x":
+		case 'x':
 			this.exitDoor = new ExitDoor(X, Y);
 			break;
-		case "h":
+		case 'h':
 			Wall wall1 = new Wall(X, Y, "1");
 			this.immobileList.add(wall1);
 			this.elementList.add(wall1);
 			break;
-		case "v":
+		case 'v':
 			Wall wall2 = new Wall(X, Y, "2");
 			this.immobileList.add(wall2);
 			this.elementList.add(wall2);
 			break;
-		case "c":
+		case 'c':
 			Wall wall3 = new Wall(X, Y, "3");
 			this.immobileList.add(wall3);
 			this.elementList.add(wall3);
 			break;
-		case "f":
+		case 'f':
 			this.immobileList.add(background);
 			this.elementList.add(background);
 			break;

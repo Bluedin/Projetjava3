@@ -147,7 +147,6 @@ public class Model extends Observable implements IModel {
 	 * check if the hero is alive
 	 * @see contract.IModel#heroIsAlive()
 	 */
-	@Override
 	public boolean heroIsAlive() {
 		return this.world.getHero().getLife();
 	}

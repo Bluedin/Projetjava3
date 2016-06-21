@@ -52,7 +52,7 @@ class DAOWorld {
 			final ResultSet resultSet = call.getResultSet();
 			while (resultSet.next()) {
 				for(int i = 1; i <= resultSet.getString(2).length(); i++){
-					world.addElement(resultSet.getString(2).substring(i - 1, i), i, resultSet.getInt(1));
+					world.addElement(resultSet.getString(2).charAt(i-1), i, resultSet.getInt(1));
 				}
 			}
 			return world;

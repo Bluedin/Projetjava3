@@ -13,14 +13,14 @@ public class Wall extends Element implements IPermeable{
 	 */
 	public Wall(int X, int Y, String sprite){
 		super(X, Y, sprite);
-		switch(sprite){
-		case "1":
+		switch(sprite.charAt(0)){
+		case '1':
 			sprite = "sprite/horizontal_bone.png";
 			break;
-		case "2":
+		case '2':
 			sprite = "sprite/vertical_bone.png";
 			break;
-		case "3":
+		case '3':
 			sprite = "sprite/bone.png";
 			break;
 		}

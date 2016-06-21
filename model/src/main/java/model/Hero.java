@@ -142,7 +142,6 @@ public class Hero extends Element implements IMobile{
 	 * move the hero in fonction of the orientation given in parameter
 	 * @see model.IMobile#moveGlobal(model.Element, model.Orientation)
 	 */
-	@Override
 	public void moveGlobal(Element element, Orientation orientation) {
 		switch(orientation){
 		case DOWN:

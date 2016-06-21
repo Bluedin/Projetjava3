@@ -27,17 +27,17 @@ public class Ennemy extends Element implements IDisappear {
 	 */
 	public Ennemy(int X, int Y, String sprite) {
 		super(X, Y, null);
-		switch (sprite) {
-		case "1":
+		switch (sprite.charAt(0)) {
+		case '1':
 			sprite = "sprite/monster_1.png";
 			break;
-		case "2":
+		case '2':
 			sprite = "sprite/monster_2.png";
 			break;
-		case "3":
+		case '3':
 			sprite = "sprite/monster_3.png";
 			break;
-		case "4":
+		case '4':
 			sprite = "sprite/monster_4.png";
 			break;
 		}
