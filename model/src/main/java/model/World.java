@@ -55,6 +55,7 @@ public class World {
 					ennemy.reset(x, y);
 					ennemy.move(hero);
 					isBlocking = false;
+					condition = true;
 				}
 
 			}
