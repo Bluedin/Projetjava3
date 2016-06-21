@@ -7,7 +7,7 @@ package model;
 public enum Permeability {
 
 	/**
-	 * 
+	 * can be passed through
 	 */
 	PENETRABLE,
 	/**
