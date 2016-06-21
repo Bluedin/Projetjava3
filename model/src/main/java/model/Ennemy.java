@@ -82,6 +82,10 @@ public class Ennemy extends Element implements IDisappear {
 		if (this.getX() == hero.getX() && this.getY() == hero.getY()) {
 			hero.die();
 		}
+		if(hero.getSpell().getX() == this.getX() && hero.getSpell().getY() == this.getY()){
+			this.disappear();
+			hero.getSpell().disappear(hero);
+		}
 	}
 	
 
